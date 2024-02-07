@@ -242,7 +242,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-group">
-                                            <label for="brand_id">Brand</label>
+                                            <label for="brand_id">Manufacturers</label>
                                             <select name="brand_id" data-toggle="select2" class="form-control" id="brand_id">
                                                 @php
                                                     echo App\Models\Brand::getDropDownList('name');
@@ -255,21 +255,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <label for="model_id">Model</label>
-                                            <select name="model_id" data-toggle="select2" class="form-control" id="model_id">
-                                                <option value="">Select One</option>
-                                            </select>
-                                            <div class="invalid-feedback" style="display: block;">
-                                                @error('model_id')
-                                                    {{ $message }}
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
-
 
 
                                 <div class="row">
@@ -289,25 +275,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col" id="product_warrenty">
-                                        <div class="form-group">
-                                            <label for="warrenty_id">Warrenty</label>
-                                            <select name="warrenty_id" data-toggle="select2" class="form-control" id="warrenty_id">
-                                                @php
-                                                    echo App\Models\ProductWarrenty::getDropDownList('name');
-                                                @endphp
-                                            </select>
-
-                                            <div class="invalid-feedback" style="display: block;">
-                                                @error('warrenty')
-                                                    {{ $message }}
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    @if(DB::table('config_setups')->where('code', 'measurement_unit')->where('status', 0)->first())
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-12" id="product_unit">
                                         <div class="form-group">
                                             <label for="unit_id">Unit</label>
                                             <select name="unit_id" data-toggle="select2" class="form-control" id="unit_id">
@@ -322,7 +290,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @endif
 
                                 </div>
 
@@ -606,7 +573,7 @@
                 $("#product_price").fadeOut(500);
                 $("#product_discounted_price").fadeOut(500);
                 $("#product_stock").fadeOut(500);
-                $("#product_warrenty").fadeOut(500);
+                $("#product_unit").fadeOut(500);
             } else {
                 $("#product_variant").fadeOut(500);
 
@@ -614,7 +581,7 @@
                 $("#product_price").fadeIn(500);
                 $("#product_discounted_price").fadeIn(500);
                 $("#product_stock").fadeIn(500);
-                $("#product_warrenty").fadeIn(500);
+                $("#product_unit").fadeIn(500);
             }
         }
 
@@ -733,29 +700,6 @@
                         $('#childcategory_id').html('<option value="">Select Child Category</option>');
                         $.each(result, function (key, value) {
                             $("#childcategory_id").append('<option value="' + value.id + '">' + value.name + '</option>');
-                        });
-                    }
-                });
-            });
-        });
-
-        $(document).ready(function () {
-            $('#brand_id').on('change', function () {
-
-                var bandId = this.value;
-                $("#model_id").html('');
-                $.ajax({
-                    url: "{{url('/brand/wise/model')}}",
-                    type: "POST",
-                    data: {
-                        brand_id: bandId,
-                        _token: '{{csrf_token()}}'
-                    },
-                    dataType: 'json',
-                    success: function (result) {
-                        $('#model_id').html('<option value="">Select Model</option>');
-                        $.each(result, function (key, value) {
-                            $("#model_id").append('<option value="' + value.id + '">' + value.name + '</option>');
                         });
                     }
                 });

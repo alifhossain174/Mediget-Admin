@@ -85,7 +85,7 @@ class ProductController extends Controller
         $product->specification = $request->specification;
         $product->warrenty_policy = $request->warrenty_policy;
         $product->brand_id = $request->brand_id;
-        $product->model_id = $request->model_id;
+        // $product->model_id = $request->model_id;
         $product->code = $request->code;
         $product->meta_title = $request->meta_title;
         $product->meta_keywords = $request->meta_keywords;
@@ -99,7 +99,6 @@ class ProductController extends Controller
             $product->discount_price = 0;
             $product->stock = 0;
             $product->multiple_images = NULL;
-            $product->warrenty_id = NULL;
             $product->has_variant = 1;
             //variant specific
 
@@ -122,7 +121,6 @@ class ProductController extends Controller
                 if($i == 0){ // saving the base variant price & warrenty As product main price & warrenty for filtering
                     $product->price = $request->product_variant_price[$i];
                     $product->discount_price = $request->product_variant_discounted_price[$i];
-                    $product->warrenty_id = isset($request->product_variant_warrenty[$i]) ? $request->product_variant_warrenty[$i] : null;
                     $product->save();
                 }
 
@@ -138,7 +136,6 @@ class ProductController extends Controller
                     'stock' => $request->product_variant_stock[$i],
                     'price' => $price_id,
                     'discounted_price' => $request->product_variant_discounted_price[$i],
-                    'warrenty_id' => isset($request->product_variant_warrenty[$i]) ? $request->product_variant_warrenty[$i] : null,
                     'device_condition_id' => isset($request->product_variant_device_condition_id[$i]) ? $request->product_variant_device_condition_id[$i] : null,
                     'created_at' => Carbon::now()
                 ]);
@@ -151,7 +148,6 @@ class ProductController extends Controller
             $product->price = $request->price > 0 ? $request->price : 0;
             $product->discount_price = $request->discount_price > 0 ? $request->discount_price : 0;
             $product->stock = $request->stock > 0 ? $request->stock : 0;
-            $product->warrenty_id = $request->warrenty_id;
             $product->has_variant = 0;
             //variant specific
 
@@ -369,7 +365,7 @@ class ProductController extends Controller
         $product->specification = $request->specification;
         $product->warrenty_policy = $request->warrenty_policy;
         $product->brand_id = $request->brand_id;
-        $product->model_id = $request->model_id;
+        // $product->model_id = $request->model_id;
         $product->code = $request->code;
         $product->unit_id = isset($request->unit_id) ? $request->unit_id : null;
         $product->status = $request->status;
@@ -399,7 +395,6 @@ class ProductController extends Controller
             $product->discount_price = 0;
             $product->stock = 0;
             $product->multiple_images = NULL;
-            $product->warrenty_id = NULL;
             $product->has_variant = 1;
             //variant specific
 
@@ -410,7 +405,6 @@ class ProductController extends Controller
                 if($i == 0){ // saving the base variant price & warrenty As product main price & warrenty for filtering
                     $product->price = $request->product_variant_price[$i];
                     $product->discount_price = $request->product_variant_discounted_price[$i];
-                    $product->warrenty_id = isset($request->product_variant_warrenty[$i]) ? $request->product_variant_warrenty[$i] : null;
                     $product->save();
                 }
 
@@ -444,7 +438,6 @@ class ProductController extends Controller
                     $variantInfo->stock = $request->product_variant_stock[$i];
                     $variantInfo->price = $price_id;
                     $variantInfo->discounted_price = $request->product_variant_discounted_price[$i];
-                    $variantInfo->warrenty_id = isset($request->product_variant_warrenty[$i]) ? $request->product_variant_warrenty[$i] : null;
                     $variantInfo->device_condition_id = isset($request->product_variant_device_condition_id[$i]) ? $request->product_variant_device_condition_id[$i] : null;
                     $variantInfo->updated_at = Carbon::now();
                     $variantInfo->save();
@@ -477,7 +470,6 @@ class ProductController extends Controller
                         'stock' => $request->product_variant_stock[$i],
                         'price' => $price_id,
                         'discounted_price' => $request->product_variant_discounted_price[$i],
-                        'warrenty_id' => isset($request->product_variant_warrenty[$i]) ? $request->product_variant_warrenty[$i] : null,
                         'device_condition_id' => isset($request->product_variant_device_condition_id[$i]) ? $request->product_variant_device_condition_id[$i] : null,
                         'created_at' => Carbon::now()
                     ]);
@@ -492,7 +484,6 @@ class ProductController extends Controller
             $product->price = $request->price > 0 ? $request->price : 0;
             $product->discount_price = $request->discount_price > 0 ? $request->discount_price : 0;
             $product->stock = $request->stock > 0 ? $request->stock : 0;
-            $product->warrenty_id = $request->warrenty_id;
             $product->has_variant = 0;
             //variant specific
 
@@ -702,7 +693,7 @@ class ProductController extends Controller
             $subcategoryId = Subcategory::where('status', 1)->where('category_id', isset($categoryId[0]) ? $categoryId[0]->id : null)->select('id')->inRandomOrder()->limit(1)->get();
             $childCategoryId = ChildCategory::where('subcategory_id', isset($subcategoryId[0]) ? $subcategoryId[0]->id : null)->select('id')->inRandomOrder()->limit(1)->get();
             $brandId = Brand::where('status', 1)->select('id')->inRandomOrder()->limit(1)->get();
-            $modelId = ProductModel::where('brand_id', isset($brandId[0]) ? $brandId[0]->id : null)->select('id')->inRandomOrder()->limit(1)->get();
+            // $modelId = ProductModel::where('brand_id', isset($brandId[0]) ? $brandId[0]->id : null)->select('id')->inRandomOrder()->limit(1)->get();
             $unitId = Unit::select('id')->inRandomOrder()->limit(1)->get();
             $warrentyId = ProductWarrenty::select('id')->inRandomOrder()->limit(1)->get();
             $flagId = Flag::select('id')->where('status', 1)->inRandomOrder()->limit(1)->get();
@@ -726,7 +717,7 @@ class ProductController extends Controller
                 'subcategory_id' => isset($subcategoryId[0]) ? $subcategoryId[0]->id : null,
                 'childcategory_id' => isset($childCategoryId[0]) ? $childCategoryId[0]->id : null,
                 'brand_id' => isset($brandId[0]) ? $brandId[0]->id : null,
-                'model_id' => isset($modelId[0]) ? $modelId[0]->id : null,
+                // 'model_id' => isset($modelId[0]) ? $modelId[0]->id : null,
                 'name' => $title,
                 'code' => rand(100,999),
                 'image' => $request->product_type == 1 ? 'productImages/'. rand(1,20).'.png' : 'productImages/'. rand(21,40).'.png',
@@ -741,7 +732,6 @@ class ProductController extends Controller
                 'unit_id' => isset($unitId[0]) ? $unitId[0]->id : null,
                 'tags' => 'product,demo',
                 'video_url' => 'https://www.youtube.com/watch?v=2tirsYI5D2M',
-                'warrenty_id' => isset($warrentyId[0]) ? $warrentyId[0]->id : null,
                 'slug' => time(). str::random(5),
                 'flag_id' => isset($flagId[0]) ? $flagId[0]->id : null,
                 'meta_title' => $title,
@@ -778,7 +768,6 @@ class ProductController extends Controller
                     $variantInfo->stock = 1000;
                     $variantInfo->price = $price;
                     $variantInfo->discounted_price = $price - 10;
-                    $variantInfo->warrenty_id = isset($warrentyID[0]) ? $warrentyID[0]->id : null;
                     $variantInfo->device_condition_id = isset($conditionID[0]) ? $conditionID[0]->id : null;
                     $variantInfo->created_at = Carbon::now();
                     $variantInfo->save();
