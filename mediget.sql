@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2024 at 11:02 AM
+-- Generation Time: Feb 08, 2024 at 04:50 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -945,12 +945,12 @@ CREATE TABLE `flags` (
 --
 
 INSERT INTO `flags` (`id`, `icon`, `name`, `status`, `featured`, `slug`, `serial`, `created_at`, `updated_at`) VALUES
-(13, 'flag_icons/w3nrr1707299772.svg', 'Prescription Medicines', 1, 0, 'prescription-medicines-8GgsU-1707299772', 1, '2024-02-07 09:41:51', '2024-02-07 09:56:12'),
-(14, 'flag_icons/sUl6x1707299694.svg', 'Women’s Care', 1, 0, 'womens-care-DouHJ-1707299694', 1, '2024-02-07 09:54:54', NULL),
-(15, 'flag_icons/7wVCj1707299722.svg', 'Skin’s Care', 1, 0, 'skins-care-yxrwx-1707299722', 1, '2024-02-07 09:55:22', NULL),
-(16, 'flag_icons/9szaE1707299733.svg', 'Men’s Care', 1, 0, 'mens-care-FDFAK-1707299733', 1, '2024-02-07 09:55:33', NULL),
-(17, 'flag_icons/h4HpR1707299743.svg', 'Devices & Equipment', 1, 0, 'devices-equipment-jpnMl-1707299743', 1, '2024-02-07 09:55:43', NULL),
-(18, 'flag_icons/Znk8N1707299752.svg', 'Personal Care Products', 1, 0, 'personal-care-products-Kq9y0-1707299752', 1, '2024-02-07 09:55:52', NULL);
+(13, 'flag_icons/w3nrr1707299772.svg', 'Prescription Medicines', 1, 0, 'prescription-medicines-8GgsU-1707299772', 1, '2024-02-07 09:41:51', '2024-02-07 10:08:14'),
+(14, 'flag_icons/sUl6x1707299694.svg', 'Women’s Care', 1, 0, 'womens-care-DouHJ-1707299694', 2, '2024-02-07 09:54:54', '2024-02-07 10:08:14'),
+(15, 'flag_icons/7wVCj1707299722.svg', 'Skin’s Care', 1, 0, 'skins-care-yxrwx-1707299722', 3, '2024-02-07 09:55:22', '2024-02-07 10:08:14'),
+(16, 'flag_icons/9szaE1707299733.svg', 'Men’s Care', 1, 0, 'mens-care-FDFAK-1707299733', 4, '2024-02-07 09:55:33', '2024-02-07 10:08:14'),
+(17, 'flag_icons/h4HpR1707299743.svg', 'Devices & Equipment', 1, 0, 'devices-equipment-jpnMl-1707299743', 5, '2024-02-07 09:55:43', '2024-02-07 10:08:14'),
+(18, 'flag_icons/Znk8N1707299752.svg', 'Personal Care Products', 1, 0, 'personal-care-products-Kq9y0-1707299752', 6, '2024-02-07 09:55:52', '2024-02-07 10:08:14');
 
 -- --------------------------------------------------------
 
