@@ -15,10 +15,6 @@
         table.dataTable tbody td{
             text-align: center !important;
         }
-        table.dataTable tbody td:nth-child(4){
-            text-align: center !important;
-            width: 180px;
-        }
         tfoot {
             display: table-header-group !important;
         }
@@ -30,10 +26,10 @@
 @endsection
 
 @section('page_title')
-    Medicine Generics
+    Medicine Types
 @endsection
 @section('page_heading')
-    View All Medicine Generics
+    View All Medicine Types
 @endsection
 
 @section('content')
@@ -41,20 +37,18 @@
         <div class="col-lg-12 col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-3">Medicine Generic List</h4>
+                    <h4 class="card-title mb-3">Medicine Type List</h4>
                     <div class="table-responsive">
 
                         <label id="customFilter">
-                            <button class="btn btn-success btn-sm" id="addNewGeneric" style="margin-left: 5px"><b><i class="feather-plus"></i> Add New Generic</b></button>
+                            <button class="btn btn-success btn-sm" id="addNewGeneric" style="margin-left: 5px"><b><i class="feather-plus"></i> Add New Type</b></button>
                         </label>
 
                         <table class="table table-bordered mb-0 data-table">
                             <thead>
                                 <tr>
                                     <th class="text-center">SL</th>
-                                    <th class="text-center">Generic Name</th>
-                                    <th class="text-center">Brand Name</th>
-                                    <th class="text-center">Description</th>
+                                    <th class="text-center">Name</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -75,7 +69,7 @@
             <div class="modal-content">
                 <form id="productForm2" name="productForm2" class="form-horizontal">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel2">Add New Generic</h5>
+                        <h5 class="modal-title" id="exampleModalLabel2">Add New Type</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -83,15 +77,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Name<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="name" placeholder="Generic Name" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Brand Name</label>
-                            <input type="text" class="form-control" placeholder="Brand Name (Optinal)" name="brand_name">
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea name="description" placeholder="Short Description" class="form-control"></textarea>
+                            <input type="text" class="form-control" name="name" placeholder="e.g. Capsul" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -114,18 +100,10 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden" name="generic_id" id="generic_id">
+                        <input type="hidden" name="type_id" id="type_id">
                         <div class="form-group">
                             <label>Name<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="generic_name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Brand Name</label>
-                            <input type="text" class="form-control" id="brand_name" name="brand_name">
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea name="description" id="description" placeholder="Short Description" class="form-control"></textarea>
+                            <input type="text" class="form-control" id="type_name" name="name" required>
                         </div>
                         <div class="form-group">
                             <label>Status</label>
@@ -160,7 +138,7 @@
             serverSide: true,
             pageLength: 15,
             lengthMenu: [15, 25, 50, 100],
-            ajax: "{{ url('view/medicine/generics') }}",
+            ajax: "{{ url('view/medicine/types') }}",
             columns: [
                 {
                     data: 'DT_RowIndex',
@@ -170,8 +148,6 @@
                     data: 'name',
                     name: 'name'
                 },
-                {data: 'brand_name', name: 'brand_name'},
-                {data: 'description', name: 'description'},
                 {data: 'status', name: 'status'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
@@ -199,7 +175,7 @@
             $(this).html('Saving..');
             $.ajax({
                 data: $('#productForm2').serialize(),
-                url: "{{ url('save/medicine/generic') }}",
+                url: "{{ url('save/medicine/type') }}",
                 type: "POST",
                 dataType: 'json',
                 success: function (data) {
@@ -219,12 +195,10 @@
 
         $('body').on('click', '.editBtn', function () {
             var id = $(this).data('id');
-            $.get("{{ url('get/medicine/generic/info') }}" +'/' + id, function (data) {
+            $.get("{{ url('get/medicine/type/info') }}" +'/' + id, function (data) {
                 $('#exampleModal').modal('show');
-                $('#generic_id').val(id);
-                $('#generic_name').val(data.name);
-                $('#brand_name').val(data.brand_name);
-                $('#description').html(data.description);
+                $('#type_id').val(id);
+                $('#type_name').val(data.name);
                 $('#medicine_status').val(data.status);
             })
         });
@@ -234,7 +208,7 @@
             $(this).html('Updating...');
             $.ajax({
                 data: $('#productForm').serialize(),
-                url: "{{ url('update/medicine/generic') }}",
+                url: "{{ url('update/medicine/type') }}",
                 type: "POST",
                 dataType: 'json',
                 success: function (data) {
@@ -257,7 +231,7 @@
             if(confirm("Are You sure want to delete !")){
                 $.ajax({
                     type: "GET",
-                    url: "{{ url('delete/medicine/generic') }}"+'/'+id,
+                    url: "{{ url('delete/medicine/type') }}"+'/'+id,
                     success: function (data) {
                         table.draw(false);
                         toastr.error("Type has been Deleted", "Deleted Successfully");

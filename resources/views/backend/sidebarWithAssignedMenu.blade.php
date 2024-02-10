@@ -29,7 +29,7 @@
                                                                 ->orWhere('route', 'like', '%view/all/subcategory%');
                                                         })->get();
 
-    $childCategoryModule = App\Models\UserRolePermission::where('user_id', Auth::user()->id)->where('route', 'like', '%add/new/childcategory%')->orWhere('route', 'like', '%view/all/childcategory%')->get();
+    // $childCategoryModule = App\Models\UserRolePermission::where('user_id', Auth::user()->id)->where('route', 'like', '%add/new/childcategory%')->orWhere('route', 'like', '%view/all/childcategory%')->get();
 
     $productModule = App\Models\UserRolePermission::where('user_id', Auth::user()->id)
                                                 ->where('route', 'like', '%add/new/product%')
@@ -149,8 +149,8 @@
 
             @if(checkAuth("view/all/flags")) <li><a href="{{ url('/view/all/flags') }}">Product Flags</a></li> @endif
             @if(checkAuth("view/all/brands")) <li><a href="{{ url('/view/all/brands') }}">Manufacturers</a></li> @endif
-            {{-- @if(checkAuth("view/all/models")) <li><a href="{{ url('/view/all/models') }}">Models of Brand</a></li> @endif --}}
             @if(checkAuth("view/medicine/generics")) <li><a href="{{ url('/view/medicine/generics') }}">Medicine Generics</a></li> @endif
+            @if(checkAuth("view/medicine/types")) <li><a href="{{ url('/view/medicine/types') }}">Medicine Types</a></li> @endif
             @if(checkAuth("view/all/diseases")) <li><a href="{{ url('/view/all/diseases') }}">Diseases</a></li> @endif
         </ul>
     </li>
@@ -172,16 +172,6 @@
         <ul class="sub-menu" aria-expanded="false">
             @if(checkAuth("add/new/subcategory")) <li><a href="{{ url('/add/new/subcategory') }}">Add New Subcategory</a></li> @endif
             @if(checkAuth("view/all/subcategory")) <li><a href="{{ url('/view/all/subcategory') }}">View All Subcategories</a></li> @endif
-        </ul>
-    </li>
-    @endif
-
-    @if ($childCategoryModule && count($childCategoryModule) > 0)
-    <li>
-        <a href="javascript: void(0);" class="has-arrow"><i class="feather-git-pull-request"></i><span>Child Category</span></a>
-        <ul class="sub-menu" aria-expanded="false">
-            @if(checkAuth("add/new/childcategory")) <li><a href="{{ url('/add/new/childcategory') }}">Add New Child Category</a></li> @endif
-            @if(checkAuth("view/all/childcategory")) <li><a href="{{ url('/view/all/childcategory') }}">View All Child Categories</a></li> @endif
         </ul>
     </li>
     @endif

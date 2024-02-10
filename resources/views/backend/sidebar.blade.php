@@ -53,6 +53,7 @@
             {{-- <li><a href="{{ url('/view/all/models') }}">Models of Brand</a></li> --}}
             <li><a href="{{ url('/view/all/flags') }}">Product Flags</a></li>
             <li><a href="{{ url('/view/medicine/generics') }}">Medicine Generics</a></li>
+            <li><a href="{{ url('/view/medicine/types') }}">Medicine Types</a></li>
             <li><a href="{{ url('/view/all/diseases') }}">Diseases</a></li>
 
         </ul>
@@ -71,14 +72,7 @@
             <li><a href="{{ url('/view/all/subcategory') }}">View All Subcategories</a></li>
         </ul>
     </li>
-    <li>
-        <a href="javascript: void(0);" class="has-arrow"><i class="feather-git-pull-request"></i><span>Child
-                Category</span></a>
-        <ul class="sub-menu" aria-expanded="false">
-            <li><a href="{{ url('/add/new/childcategory') }}">Add New Child Category</a></li>
-            <li><a href="{{ url('/view/all/childcategory') }}">View All Child Categories</a></li>
-        </ul>
-    </li>
+
     <li>
         <a href="javascript: void(0);" class="has-arrow"><i class="feather-box"></i><span>Manage Products</span></a>
         <ul class="sub-menu" aria-expanded="false">

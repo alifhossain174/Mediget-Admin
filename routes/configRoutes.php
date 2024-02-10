@@ -7,6 +7,7 @@ use App\Http\Controllers\ColorController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\StorageController;
 use App\Http\Controllers\MedcineGenericController;
+use App\Http\Controllers\MedicineTypeController;
 use App\Http\Controllers\DiseaseController;
 
 
@@ -111,11 +112,18 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('/get/medicine/generic/info/{id}', [MedcineGenericController::class, 'getMedicineGenericInfo'])->name('GetMedicineGenericInfo');
     Route::post('/update/medicine/generic', [MedcineGenericController::class, 'updateMedicineGeneric'])->name('UpdateMedicineGeneric');
 
-    // meidicine generic
+    // diseases
     Route::get('/view/all/diseases', [DiseaseController::class, 'viewDiseases'])->name('ViewDiseases');
     Route::post('/save/disease', [DiseaseController::class, 'saveDisease'])->name('SaveDisease');
     Route::get('/delete/disease/{id}', [DiseaseController::class, 'deleteDisease'])->name('DeleteDisease');
     Route::get('/get/disease/info/{id}', [DiseaseController::class, 'getDiseaseInfo'])->name('GetDiseaseInfo');
     Route::post('/update/disease', [DiseaseController::class, 'updateDisease'])->name('UpdateDisease');
+
+    // medicine type
+    Route::get('/view/medicine/types', [MedicineTypeController::class, 'viewMeidicineTypes'])->name('ViewMeidicineTypes');
+    Route::post('/save/medicine/type', [MedicineTypeController::class, 'saveMeidicineType'])->name('SaveMeidicineType');
+    Route::get('/delete/medicine/type/{id}', [MedicineTypeController::class, 'deleteMedicineType'])->name('DeleteMedicineType');
+    Route::get('/get/medicine/type/info/{id}', [MedicineTypeController::class, 'getMedicineTypeInfo'])->name('GetMedicineTypeInfo');
+    Route::post('/update/medicine/type', [MedicineTypeController::class, 'updateMedicineType'])->name('UpdateMedicineType');
 
 });

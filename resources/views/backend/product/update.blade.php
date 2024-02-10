@@ -62,15 +62,34 @@
 
                         <div class="row">
                             <div class="col-lg-8 border-right">
-                                <div class="form-group">
-                                    <label for="name">Title <span class="text-danger">*</span></label>
-                                    <input type="text" id="name" value="{{$product->name}}" name="name" class="form-control" placeholder="Enter Product Name Here" required>
-                                    <div class="invalid-feedback" style="display: block;">
-                                        @error('name')
-                                            {{ $message }}
-                                        @enderror
+
+
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="form-group">
+                                            <label for="name">Brand Name  <span class="text-danger">*</span></label>
+                                            <input type="text" id="name" value="{{$product->name}}" name="name" class="form-control" placeholder="Enter Product Name Here" required>
+                                            <div class="invalid-feedback" style="display: block;">
+                                                @error('name')
+                                                    {{ $message }}
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="name">Strength</label>
+                                            <input type="text" id="strength" value="{{$product->strength}}" name="strength" class="form-control" placeholder="e.g. 10mg">
+                                            <div class="invalid-feedback" style="display: block;">
+                                                @error('name')
+                                                    {{ $message }}
+                                                @enderror
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
+
                                 <div class="form-group">
                                     <label for="short_description">Short Description (Max 255 Characters)</label>
                                     <textarea id="short_description" name="short_description" class="form-control" rows="6" placeholder="Enter Short Description Here">{{$product->short_description}}</textarea>
@@ -151,6 +170,39 @@
                                 <div class="form-group">
                                     <label for="image">Change Product Thumbnail<span class="text-danger">*</span></label>
                                     <input type="file" name="image" class="dropify" data-height="205" data-max-file-size="1M" accept="image/*"/>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="generic_id">Generic <span class="text-danger">*</span></label>
+                                            <select name="generic_id" data-toggle="select2" class="form-control" id="generic_id" required>
+                                                @php
+                                                    echo App\Models\MedicineGeneric::getDropDownList('name', $product->generic_id);
+                                                @endphp
+                                            </select>
+                                            <div class="invalid-feedback" style="display: block;">
+                                                @error('generic_id')
+                                                    {{ $message }}
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="disease_id">Diseases</label>
+                                            <select name="disease_id" data-toggle="select2" class="form-control" id="disease_id">
+                                                @php
+                                                    echo App\Models\Disease::getDropDownList('name', $product->disease_id);
+                                                @endphp
+                                            </select>
+                                            <div class="invalid-feedback" style="display: block;">
+                                                @error('disease_id')
+                                                    {{ $message }}
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -238,17 +290,14 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
-                                            <label for="childcategory_id">Child Category</label>
-                                            <select name="childcategory_id" data-toggle="select2" class="form-control" id="childcategory_id">
-                                                <option value="">Select One</option>
-                                                @if(count($childcategories) > 0)
-                                                @foreach ($childcategories as $childcategory)
-                                                <option value="{{$childcategory->id}}" @if($childcategory->id == $product->childcategory_id) selected @endif>{{$childcategory->name}}</option>
-                                                @endforeach
-                                                @endif
+                                            <label for="medicine_type_id">Medicine Type</label>
+                                            <select name="medicine_type_id" data-toggle="select2" class="form-control" id="medicine_type_id">
+                                                @php
+                                                    echo App\Models\MedicineType::getDropDownList('name', $product->medicine_type_id);
+                                                @endphp
                                             </select>
                                             <div class="invalid-feedback" style="display: block;">
-                                                @error('childcategory_id')
+                                                @error('medicine_type_id')
                                                     {{ $message }}
                                                 @enderror
                                             </div>
@@ -293,7 +342,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-12" id="product_unit" @if($product->has_variant == 1) style="display: none" @endif>
+                                    <div class="col" id="product_unit" @if($product->has_variant == 1) style="display: none" @endif>
                                         <div class="form-group">
                                             <label for="unit_id">Unit</label>
                                             <select name="unit_id" data-toggle="select2" class="form-control" id="unit_id">
@@ -309,6 +358,50 @@
                                         </div>
                                     </div>
 
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="piece_per_leaf">Pieces Per Leaf</label>
+                                            <input id="piece_per_leaf" name="piece_per_leaf" value="{{$product->piece_per_leaf}}" data-toggle="touchspin" type="text">
+                                            <div class="invalid-feedback" style="display: block;">
+                                                @error('piece_per_leaf')
+                                                    {{ $message }}
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="leaf_per_box">Leaf Per Box</label>
+                                            <input type="text" id="leaf_per_box" value="{{$product->leaf_per_box}}" data-toggle="touchspin" name="leaf_per_box" class="form-control">
+                                            <div class="invalid-feedback" style="display: block;">
+                                                @error('leaf_per_box')
+                                                    {{ $message }}
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group pt-2">
+                                            <label for="is_otc">
+                                                <input type="checkbox" id="is_otc" value="1" name="is_otc" @if($product->is_otc == 1) checked @endif data-size="small" data-toggle="switchery" data-color="green" data-secondary-color="#df3554"/>
+                                                Is OTC Medicine ?
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group pt-2">
+                                            <label for="is_antibiotic">
+                                                <input type="checkbox" id="is_antibiotic" value="1" name="is_antibiotic" @if($product->is_antibiotic == 1) checked @endif data-size="small" data-toggle="switchery" data-color="green" data-secondary-color="#df3554"/>
+                                                is it Antibiotic ?
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
 
 
@@ -860,28 +953,6 @@
                         $('#childcategory_id').html('<option value="">Select Child Category</option>');
                         $.each(result, function (key, value) {
                             $("#subcategory_id").append('<option value="' + value.id + '">' + value.name + '</option>');
-                        });
-                    }
-                });
-            });
-        });
-
-        $(document).ready(function () {
-            $('#subcategory_id').on('change', function () {
-                var subCategoryId = this.value;
-                $("#childcategory_id").html('');
-                $.ajax({
-                    url: "{{url('/subcategory/wise/childcategory')}}",
-                    type: "POST",
-                    data: {
-                        subcategory_id: subCategoryId,
-                        _token: '{{csrf_token()}}'
-                    },
-                    dataType: 'json',
-                    success: function (result) {
-                        $('#childcategory_id').html('<option value="">Select Child Category</option>');
-                        $.each(result, function (key, value) {
-                            $("#childcategory_id").append('<option value="' + value.id + '">' + value.name + '</option>');
                         });
                     }
                 });

@@ -15,12 +15,16 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('generic_id')->nullable();
+            $table->unsignedBigInteger('disease_id')->nullable();
+            $table->unsignedBigInteger('medicine_type_id')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('subcategory_id')->nullable();
             $table->unsignedBigInteger('childcategory_id')->nullable();
             $table->unsignedBigInteger('brand_id')->nullable();
             $table->unsignedBigInteger('model_id')->nullable();
             $table->string('name');
+            $table->string('strength')->nullable();
             $table->string('code')->nullable();
             $table->string('image');
             $table->string('multiple_images')->nullable();
@@ -31,12 +35,19 @@ class CreateProductsTable extends Migration
             $table->double('price')->default(0);
             $table->double('discount_price')->default(0);
             $table->double('stock')->default(0);
+
+            $table->double('piece_per_leaf')->default(0);
+            $table->double('leaf_per_box')->default(0);
+
             $table->unsignedBigInteger('unit_id')->nullable();
             $table->string('tags')->nullable();
             $table->string('video_url')->nullable();
             $table->tinyInteger('warrenty_id')->nullable();
             $table->string('slug')->nullable();
             $table->tinyInteger('flag_id')->nullable();
+
+            $table->tinyInteger('is_otc')->default(0)->comment('0=>No; 1=>Yes');
+            $table->tinyInteger('is_antibiotic')->default(0)->comment('0=>No; 1=>Yes');
 
             $table->string('meta_title')->nullable();
             $table->string('meta_keywords')->nullable();

@@ -70,13 +70,18 @@ class ProductController extends Controller
 
         $product = new Product();
         $product->name = $request->name;
+        $product->strength = $request->strength;
+        $product->generic_id = $request->generic_id;
+        $product->disease_id = $request->disease_id;
+        $product->medicine_type_id = $request->medicine_type_id;
+        $product->piece_per_leaf = $request->piece_per_leaf;
+        $product->leaf_per_box = $request->leaf_per_box;
         $product->short_description = $request->short_description;
         $product->description = $request->description;
         $product->tags = $request->tags;
         $product->video_url = $request->video_url;
         $product->category_id = $request->category_id;
         $product->subcategory_id = $request->subcategory_id;
-        $product->childcategory_id = $request->childcategory_id;
         $product->image = $image;
         $product->flag_id = $request->flag_id;
         $product->slug = $slug."-".time().str::random(5);
@@ -85,8 +90,9 @@ class ProductController extends Controller
         $product->specification = $request->specification;
         $product->warrenty_policy = $request->warrenty_policy;
         $product->brand_id = $request->brand_id;
-        // $product->model_id = $request->model_id;
         $product->code = $request->code;
+        $product->is_otc = $request->is_otc;
+        $product->is_antibiotic = $request->is_antibiotic;
         $product->meta_title = $request->meta_title;
         $product->meta_keywords = $request->meta_keywords;
         $product->meta_description = $request->meta_description;
@@ -354,13 +360,19 @@ class ProductController extends Controller
         $slug = preg_replace('!\s+!', '-', $clean);
 
         $product->name = $request->name;
+        $product->strength = $request->strength;
+        $product->generic_id = $request->generic_id;
+        $product->disease_id = $request->disease_id;
+        $product->medicine_type_id = $request->medicine_type_id;
+        $product->piece_per_leaf = $request->piece_per_leaf;
+        $product->leaf_per_box = $request->leaf_per_box;
         $product->short_description = $request->short_description;
         $product->description = $request->description;
         $product->tags = $request->tags;
         $product->video_url = $request->video_url;
         $product->category_id = $request->category_id;
         $product->subcategory_id = $request->subcategory_id;
-        $product->childcategory_id = $request->childcategory_id;
+        // $product->childcategory_id = $request->childcategory_id;
         $product->image = $image;
         $product->specification = $request->specification;
         $product->warrenty_policy = $request->warrenty_policy;
@@ -371,6 +383,10 @@ class ProductController extends Controller
         $product->status = $request->status;
         // $product->slug = $slug."-".time().str::random(5);
         $product->flag_id = $request->flag_id;
+
+        $product->is_otc = $request->is_otc;
+        $product->is_antibiotic = $request->is_antibiotic;
+
         $product->meta_title = $request->meta_title;
         $product->meta_keywords = $request->meta_keywords;
         $product->meta_description = $request->meta_description;
