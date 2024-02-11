@@ -45,6 +45,7 @@
 
                         <label id="customFilter">
                             <button class="btn btn-success btn-sm" id="addNewGeneric" style="margin-left: 5px"><b><i class="feather-plus"></i> Add New Disease</b></button>
+                            <a href="{{url('rearrange/diseases')}}" class="btn btn-info btn-sm"><b><i class="fas fa-sort-amount-up"></i> Rearrange Diseases</b></a>
                         </label>
 
                         <table class="table table-bordered mb-0 data-table">

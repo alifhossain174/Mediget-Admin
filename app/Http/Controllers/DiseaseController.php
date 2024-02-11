@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Brian2694\Toastr\Facades\Toastr;
 
 class DiseaseController extends Controller
 {
@@ -99,5 +100,22 @@ class DiseaseController extends Controller
             'updated_at' => Carbon::now()
         ]);
         return response()->json(['success'=>'Updated successfully.']);
+    }
+
+    public function rearrangeDiseases(){
+        $diseases = Disease::orderBy('serial', 'asc')->get();
+        return view('backend.config.rearrange_diseases', compact('diseases'));
+    }
+
+    public function saveRearrangedDiseases(Request $request){
+        $sl = 1;
+        foreach($request->id as $id){
+            Disease::where('id', $id)->update([
+                'serial' => $sl
+            ]);
+            $sl++;
+        }
+        Toastr::success('Diseases has been Rerranged', 'Success');
+        return redirect('/view/all/diseases');
     }
 }

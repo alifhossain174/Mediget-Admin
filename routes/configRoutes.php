@@ -118,6 +118,8 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('/delete/disease/{id}', [DiseaseController::class, 'deleteDisease'])->name('DeleteDisease');
     Route::get('/get/disease/info/{id}', [DiseaseController::class, 'getDiseaseInfo'])->name('GetDiseaseInfo');
     Route::post('/update/disease', [DiseaseController::class, 'updateDisease'])->name('UpdateDisease');
+    Route::get('/rearrange/diseases', [DiseaseController::class, 'rearrangeDiseases'])->name('RearrangeDiseases');
+    Route::post('/save/rearranged/diseases', [DiseaseController::class, 'saveRearrangedDiseases'])->name('SaveRearrangedDiseases');
 
     // medicine type
     Route::get('/view/medicine/types', [MedicineTypeController::class, 'viewMeidicineTypes'])->name('ViewMeidicineTypes');
