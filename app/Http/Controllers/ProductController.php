@@ -721,14 +721,24 @@ class ProductController extends Controller
             $conditionID = DB::table('device_conditions')->select('id')->inRandomOrder()->limit(1)->get();
             $warrentyID = DB::table('product_warrenties')->select('id')->inRandomOrder()->limit(1)->get();
 
+
+            $generics = DB::table('medicine_generics')->select('id')->inRandomOrder()->limit(1)->get();
+            $medicineTypes = DB::table('medicine_types')->select('id')->inRandomOrder()->limit(1)->get();
+            $diseases = DB::table('diseases')->select('id')->inRandomOrder()->limit(1)->get();
+
+
             $multipleProductArray = array();
             for($j=1; $j<=4; $j++){
-                $multipleProductArray[] = $request->product_type == 1 ? rand(1,20).'.png' : rand(21,40).'.png';
+                $multipleProductArray[] = '31343C.svg';
             }
 
             $price = rand(100,999);
 
             $id = Product::insertGetId([
+                'generic_id' => isset($generics[0]) ? $generics[0]->id : null,
+                'disease_id' => isset($diseases[0]) ? $diseases[0]->id : null,
+                'medicine_type_id' => isset($medicineTypes[0]) ? $medicineTypes[0]->id : null,
+
                 'category_id' => isset($categoryId[0]) ? $categoryId[0]->id : null,
                 'subcategory_id' => isset($subcategoryId[0]) ? $subcategoryId[0]->id : null,
                 'childcategory_id' => isset($childCategoryId[0]) ? $childCategoryId[0]->id : null,
@@ -736,8 +746,9 @@ class ProductController extends Controller
                 // 'model_id' => isset($modelId[0]) ? $modelId[0]->id : null,
                 'name' => $title,
                 'code' => rand(100,999),
-                'image' => $request->product_type == 1 ? 'productImages/'. rand(1,20).'.png' : 'productImages/'. rand(21,40).'.png',
+                'image' => $request->product_type == 1 ? 'productImages/31343C.svg' : 'productImages/31343C.svg',
                 'multiple_images' => $i%2 != 0 ? json_encode($multipleProductArray) : null,
+                'strength' => $faker->text($maxNbChars = 10),
                 'short_description' => $faker->text($maxNbChars = 200),
                 'description' => $faker->text($maxNbChars = 400),
                 'specification' => $faker->text($maxNbChars = 200),
@@ -755,6 +766,12 @@ class ProductController extends Controller
                 'meta_description' => null,
                 'status' => 1,
                 'has_variant' => $i%2 == 0 ? 1 : 0,
+
+                'is_otc' => $i%2 == 0 ? 1 : 0,
+                'is_antibiotic' => $i%2 == 0 ? 1 : 0,
+
+                'piece_per_leaf' => 10,
+                'leaf_per_box' => 15,
                 'is_demo' => 1,
                 'created_at' => Carbon::now()
             ]);
@@ -773,10 +790,13 @@ class ProductController extends Controller
             if($i%2 == 0){
                 foreach($multipleProductArray as $image)
                 {
+                    $unitId = Unit::select('id')->inRandomOrder()->limit(1)->get();
+
                     $variantInfo = new ProductVariant();
                     $variantInfo->product_id = $id;
                     $variantInfo->image = $image;
                     $variantInfo->color_id = isset($colorId[0]) ? $colorId[0]->id : null;
+                    $variantInfo->unit_id = isset($unitId[0]) ? $unitId[0]->id : null;
                     $variantInfo->size_id = isset($sizeId[0]) ? $sizeId[0]->id : null;
                     $variantInfo->region_id = isset($regionId[0]) ? $regionId[0]->id : null;
                     $variantInfo->sim_id = isset($simId[0]) ? $simId[0]->id : null;

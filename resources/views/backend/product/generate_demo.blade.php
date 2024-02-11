@@ -30,8 +30,7 @@
                                         <div class="form-group">
                                             <label>Demo Products Type</label>
                                             <select class="form-control" name="product_type">
-                                                <option value="1">Fashion</option>
-                                                <option value="2">Tech</option>
+                                                <option value="1">Medicine</option>
                                             </select>
                                         </div>
                                     </div>

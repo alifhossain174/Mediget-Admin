@@ -43,13 +43,18 @@ class CategoryController extends Controller
             $categoryBanner = "category_images/" . $image_name;
         }
 
+        $slug = Generate::Slug($request->name);
+        if(Category::where('slug', $slug)->exists()){
+            $slug = $slug."-".Category::where('slug', $slug)->count()+1;
+        }
+
         Category::insert([
             'name' => $request->name,
             'featured' => $request->featured ? $request->featured : 0,
-            'show_on_navbar' => $request->show_on_navbar ? $request->show_on_navbar : 1,
+            'show_on_navbar' => $request->show_on_navbar,
             'icon' => $icon,
             'banner_image' => $categoryBanner,
-            'slug' => Generate::Slug($request->name),
+            'slug' => $slug,
             'status' => 1,
             'serial' => Category::min('serial') - 1,
             'created_at' => Carbon::now()
@@ -197,7 +202,7 @@ class CategoryController extends Controller
             'name' => $request->name,
             'icon' => $icon,
             'banner_image' => $categoryBanner,
-            'slug' => Generate::Slug($request->slug),
+            'slug' => Generate::Slug($request->name),
             'status' => $request->status,
             'featured' => $request->featured ? $request->featured : 0,
             'show_on_navbar' => $request->show_on_navbar,

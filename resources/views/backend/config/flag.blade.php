@@ -56,6 +56,7 @@
                                     <th class="text-center">Banner (1320*360)</th>
                                     <th class="text-center">Name</th>
                                     <th class="text-center">Status</th>
+                                    <th class="text-center">Featured</th>
                                     <th class="text-center">Created At</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -172,7 +173,7 @@
                     name: 'name'
                 },
                 {data: 'status', name: 'status'},
-                // {data: 'featured', name: 'featured'},
+                {data: 'featured', name: 'featured'},
                 {data: 'created_at', name: 'created_at'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
