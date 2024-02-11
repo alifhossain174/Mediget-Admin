@@ -51,6 +51,7 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">SL</th>
+                                    <th class="text-center">Image</th>
                                     <th class="text-center">Disease Name</th>
                                     <th class="text-center">Scientific Name</th>
                                     <th class="text-center">Description</th>
@@ -81,16 +82,20 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
+                            <label>Disease Image<span class="text-danger">*</span></label>
+                            <input type="file" class="form-control" id="disease_new_image" name="image" required>
+                        </div>
+                        <div class="form-group">
                             <label>Disease Name<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="name" placeholder="Disease Name" required>
+                            <input type="text" class="form-control" name="name" id="new_disease_name" placeholder="Disease Name" required>
                         </div>
                         <div class="form-group">
                             <label>Scientific Name</label>
-                            <input type="text" class="form-control" placeholder="Scientific Name (Optinal)" name="scientific_name">
+                            <input type="text" class="form-control" id="new_disease_scientific_name" placeholder="Scientific Name (Optinal)" name="scientific_name">
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea name="description" placeholder="Short Description" class="form-control"></textarea>
+                            <textarea name="description" id="new_disease_description" placeholder="Short Description" class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -114,6 +119,10 @@
                     </div>
                     <div class="modal-body">
                         <input type="hidden" name="disease_id" id="disease_id">
+                        <div class="form-group">
+                            <label>Disease Image<span class="text-danger">*</span></label>
+                            <input type="file" class="form-control" id="disease_update_image" name="image" required>
+                        </div>
                         <div class="form-group">
                             <label>Disease Name<span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="disease_name" name="name" required>
@@ -166,6 +175,17 @@
                     name: 'DT_RowIndex'
                 }, //orderable: true, searchable: true
                 {
+                    data: 'image',
+                    name: 'image',
+                    render: function( data, type, full, meta ) {
+                        if(data){
+                            return "<img src=\"/" + data + "\" width=\"50\"/>";
+                        } else {
+                            return '';
+                        }
+                    }
+                },
+                {
                     data: 'name',
                     name: 'name'
                 },
@@ -194,13 +214,26 @@
         });
 
         $('#saveBtn').click(function (e) {
+
             e.preventDefault();
             $(this).html('Saving..');
+
+            var formData = new FormData();
+            formData.append('image', $("#disease_new_image")[0].files[0]);
+            formData.append("name", $("#new_disease_name").val());
+            formData.append("scientific_name", $("#new_disease_scientific_name").val());
+            formData.append("description", $("#new_disease_description").val());
+
+
+            $(this).html('Saving..');
             $.ajax({
-                data: $('#productForm2').serialize(),
+                // data: $('#productForm2').serialize(),
+                data: formData,
                 url: "{{ url('save/disease') }}",
                 type: "POST",
-                dataType: 'json',
+                cache: false,
+                contentType: false,
+                processData: false,
                 success: function (data) {
                     $('#saveBtn').html('Save');
                     $('#productForm2').trigger("reset");
@@ -214,6 +247,7 @@
                     $('#saveBtn').html('Save');
                 }
             });
+
         });
 
         $('body').on('click', '.editBtn', function () {
@@ -222,20 +256,33 @@
                 $('#exampleModal').modal('show');
                 $('#disease_id').val(id);
                 $('#disease_name').val(data.name);
-                $('#scientific_name').val(data.brand_name);
+                $('#scientific_name').val(data.scientific_name);
                 $('#description').html(data.description);
                 $('#disease_status').val(data.status);
             })
         });
 
+
         $('#updateBtn').click(function (e) {
             e.preventDefault();
             $(this).html('Updating...');
+
+            var formData = new FormData();
+            formData.append('disease_id', $("#disease_id").val());
+            formData.append('image', $("#disease_update_image")[0].files[0]);
+            formData.append("name", $("#disease_name").val());
+            formData.append("scientific_name", $("#scientific_name").val());
+            formData.append("description", $("#description").val());
+            formData.append("status", $("#disease_status").val());
+
             $.ajax({
-                data: $('#productForm').serialize(),
+                // data: $('#productForm').serialize(),
+                data: formData,
                 url: "{{ url('update/disease') }}",
                 type: "POST",
-                dataType: 'json',
+                cache: false,
+                contentType: false,
+                processData: false,
                 success: function (data) {
                     $('#updateBtn').html('Save');
                     $('#productForm').trigger("reset");

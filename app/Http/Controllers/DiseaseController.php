@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Disease;
+use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -21,6 +22,11 @@ class DiseaseController extends Controller
                         else
                             return "<span class='btn btn-sm btn-danger'>Inactive</span>";
                     })
+                    ->editColumn('image', function($data) {
+                        if($data->image && file_exists(public_path($data->image))){
+                            return $data->image;
+                        }
+                    })
                     ->addIndexColumn()
                     ->addColumn('action', function($data){
                         $btn = ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$data->id.'" title="Featured" data-original-title="Featured" class="btn-sm btn-warning rounded editBtn"><i class="fas fa-edit"></i></a>';
@@ -34,10 +40,22 @@ class DiseaseController extends Controller
     }
 
     public function saveDisease(Request $request){
+
+        $image = null;
+        if ($request->hasFile('image')){
+            $get_image = $request->file('image');
+            $image_name = str::random(5) . time() . '.' . $get_image->getClientOriginalExtension();
+            $location = public_path('diseases_images/');
+            $get_image->move($location, $image_name);
+            $image = "diseases_images/" . $image_name;
+        }
+
         Disease::insert([
+            'image' => $image,
             'name' => $request->name,
             'scientific_name' => $request->scientific_name,
             'description' => $request->description,
+            'serial' => Disease::min('serial') - 1,
             'created_at' => Carbon::now()
         ]);
         return response()->json(['success'=>'Created successfully.']);
@@ -54,7 +72,26 @@ class DiseaseController extends Controller
     }
 
     public function updateDisease(Request $request){
+
+        $data = Disease::where('id', $request->disease_id)->first();
+
+        $image = $data->image;
+        if ($request->hasFile('image')){
+
+            if($image != '' && file_exists(public_path($image))){
+                unlink(public_path($image));
+            }
+
+            $get_image = $request->file('image');
+            $image_name = str::random(5) . time() . '.' . $get_image->getClientOriginalExtension();
+            $location = public_path('diseases_images/');
+            // Image::make($get_image)->save($location . $image_name, 80);
+            $get_image->move($location, $image_name);
+            $image = "diseases_images/" . $image_name;
+        }
+
         Disease::where('id', $request->disease_id)->update([
+            'image' => $image,
             'name' => $request->name,
             'scientific_name' => $request->scientific_name,
             'description' => $request->description,
