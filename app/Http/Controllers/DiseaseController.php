@@ -14,7 +14,7 @@ class DiseaseController extends Controller
     public function viewDiseases(Request $request){
         if ($request->ajax()) {
 
-            $data = Disease::orderBy('id', 'desc')->get();
+            $data = Disease::orderBy('serial', 'asc')->get();
 
             return Datatables::of($data)
                     ->editColumn('status', function($data) {
