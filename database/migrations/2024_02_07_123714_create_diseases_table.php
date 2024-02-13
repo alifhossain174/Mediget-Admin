@@ -21,6 +21,7 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->tinyInteger('status')->default(1)->comment("1=>Active; 0=>Inactive");
             $table->tinyInteger('serial')->default(1);
+            $table->string('slug');
             $table->timestamps();
         });
     }

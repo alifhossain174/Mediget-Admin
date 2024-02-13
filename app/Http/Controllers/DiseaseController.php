@@ -6,6 +6,7 @@ use App\Models\Disease;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Sohibd\Laravelslug\Generate;
 use Yajra\DataTables\DataTables;
 use Brian2694\Toastr\Facades\Toastr;
 
@@ -51,12 +52,14 @@ class DiseaseController extends Controller
             $image = "diseases_images/" . $image_name;
         }
 
+        $slug = Generate::Slug($request->name);
         Disease::insert([
             'image' => $image,
             'name' => $request->name,
             'scientific_name' => $request->scientific_name,
             'description' => $request->description,
             'serial' => Disease::min('serial') - 1,
+            'slug' => $slug,
             'created_at' => Carbon::now()
         ]);
         return response()->json(['success'=>'Created successfully.']);
@@ -91,12 +94,15 @@ class DiseaseController extends Controller
             $image = "diseases_images/" . $image_name;
         }
 
+        $slug = Generate::Slug($request->name);
+
         Disease::where('id', $request->disease_id)->update([
             'image' => $image,
             'name' => $request->name,
             'scientific_name' => $request->scientific_name,
             'description' => $request->description,
             'status' => $request->status,
+            'slug' => $slug,
             'updated_at' => Carbon::now()
         ]);
         return response()->json(['success'=>'Updated successfully.']);

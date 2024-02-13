@@ -729,7 +729,7 @@ class ProductController extends Controller
 
             $multipleProductArray = array();
             for($j=1; $j<=4; $j++){
-                $multipleProductArray[] = '31343C.svg';
+                $multipleProductArray[] = rand(1,25).'.webp';
             }
 
             $price = rand(100,999);
@@ -746,7 +746,7 @@ class ProductController extends Controller
                 // 'model_id' => isset($modelId[0]) ? $modelId[0]->id : null,
                 'name' => $title,
                 'code' => rand(100,999),
-                'image' => $request->product_type == 1 ? 'productImages/31343C.svg' : 'productImages/31343C.svg',
+                'image' => 'productImages/'. rand(1,20).'.webp' ,
                 'multiple_images' => $i%2 != 0 ? json_encode($multipleProductArray) : null,
                 'strength' => $faker->text($maxNbChars = 10),
                 'short_description' => $faker->text($maxNbChars = 200),
