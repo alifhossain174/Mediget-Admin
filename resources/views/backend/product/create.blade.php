@@ -378,18 +378,27 @@
                                                 Is OTC Medicine ?
                                             </label>
                                         </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-group pt-2">
+                                        <div class="form-group">
                                             <label for="is_antibiotic">
                                                 <input type="checkbox" id="is_antibiotic" value="1" name="is_antibiotic" data-size="small" data-toggle="switchery" data-color="green" data-secondary-color="#df3554"/>
                                                 is it Antibiotic ?
                                             </label>
                                         </div>
                                     </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="leaf_per_box">Reward Points</label>
+                                            <input type="text" id="points" data-toggle="touchspin" value="0" name="points" class="form-control">
+                                            <div class="invalid-feedback" style="display: block;">
+                                                @error('points')
+                                                    {{ $message }}
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group d-none">
                                     <label for="video_url">Video URL</label>
                                     <input type="text" id="video_url" name="video_url" class="form-control" placeholder="https://youtube.com/YGUYUTYG">
                                     <div class="invalid-feedback" style="display: block;">

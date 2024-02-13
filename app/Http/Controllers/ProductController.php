@@ -91,6 +91,7 @@ class ProductController extends Controller
         $product->warrenty_policy = $request->warrenty_policy;
         $product->brand_id = $request->brand_id;
         $product->code = $request->code;
+        $product->points = $request->points;
         $product->is_otc = $request->is_otc;
         $product->is_antibiotic = $request->is_antibiotic;
         $product->meta_title = $request->meta_title;
@@ -379,6 +380,7 @@ class ProductController extends Controller
         $product->brand_id = $request->brand_id;
         // $product->model_id = $request->model_id;
         $product->code = $request->code;
+        $product->points = $request->points;
         $product->unit_id = isset($request->unit_id) ? $request->unit_id : null;
         $product->status = $request->status;
         // $product->slug = $slug."-".time().str::random(5);
@@ -746,6 +748,7 @@ class ProductController extends Controller
                 // 'model_id' => isset($modelId[0]) ? $modelId[0]->id : null,
                 'name' => $title,
                 'code' => rand(100,999),
+                'points' => rand(1,50),
                 'image' => 'productImages/'. rand(1,20).'.webp' ,
                 'multiple_images' => $i%2 != 0 ? json_encode($multipleProductArray) : null,
                 'strength' => $faker->text($maxNbChars = 10),

@@ -35,6 +35,7 @@ class CreateProductsTable extends Migration
             $table->double('price')->default(0);
             $table->double('discount_price')->default(0);
             $table->double('stock')->default(0);
+            $table->double('points')->default(0);
 
             $table->double('piece_per_leaf')->default(0);
             $table->double('leaf_per_box')->default(0);
