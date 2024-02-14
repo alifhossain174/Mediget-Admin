@@ -600,10 +600,10 @@
                                                                         <input type="number" class="form-control" name="product_variant_stock[]" value="{{$productVariant->stock}}" style="height: 34px;" placeholder="0">
                                                                     </td>
                                                                     <td class="text-center">
-                                                                        <input type="number" class="form-control" name="product_variant_price[]" value="{{$productVariant->price}}" style="height: 34px;" placeholder="0">
+                                                                        <input type="number" step=".01" class="form-control" name="product_variant_price[]" value="{{$productVariant->price}}" style="height: 34px;" placeholder="0">
                                                                     </td>
                                                                     <td class="text-center">
-                                                                        <input type="number" class="form-control" name="product_variant_discounted_price[]" value="{{$productVariant->discounted_price}}" style="height: 34px;" placeholder="0">
+                                                                        <input type="number" step=".01" class="form-control" name="product_variant_discounted_price[]" value="{{$productVariant->discounted_price}}" style="height: 34px;" placeholder="0">
                                                                     </td>
                                                                     <td class="text-center">
                                                                         <a href="javascript:void(0)" onclick="removeRowWithDelete(this, {{$productVariant->id}})" class="btn btn-danger rounded btn-sm d-inline text-white"><i class="feather-trash-2" style="font-size: 14px; line-height: 2"></i></a>
@@ -702,10 +702,10 @@
                                                                         <input type="number" class="form-control" name="product_variant_stock[]" value="0" style="height: 34px;" placeholder="0">
                                                                     </td>
                                                                     <td class="text-center">
-                                                                        <input type="number" class="form-control" name="product_variant_price[]" value="0" style="height: 34px;" placeholder="0">
+                                                                        <input type="number" step=".01" class="form-control" name="product_variant_price[]" value="0" style="height: 34px;" placeholder="0">
                                                                     </td>
                                                                     <td class="text-center">
-                                                                        <input type="number" class="form-control" name="product_variant_discounted_price[]" value="0" style="height: 34px;" placeholder="0">
+                                                                        <input type="number" step=".01" class="form-control" name="product_variant_discounted_price[]" value="0" style="height: 34px;" placeholder="0">
                                                                     </td>
 
                                                                     <td class="text-center">

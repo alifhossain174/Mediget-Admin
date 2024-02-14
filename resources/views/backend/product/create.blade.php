@@ -565,10 +565,10 @@
                                                                     <input type="number" class="form-control" name="product_variant_stock[]" style="min-width: 100px;" value="0" style="height: 34px;" placeholder="0">
                                                                 </td>
                                                                 <td class="text-center">
-                                                                    <input type="number" class="form-control" name="product_variant_price[]" style="min-width: 100px;" value="0" style="height: 34px;" placeholder="0">
+                                                                    <input type="number" step=".01" class="form-control" name="product_variant_price[]" style="min-width: 100px;" value="0" style="height: 34px;" placeholder="0">
                                                                 </td>
                                                                 <td class="text-center">
-                                                                    <input type="number" class="form-control" name="product_variant_discounted_price[]" style="min-width: 100px;" value="0" style="height: 34px;" placeholder="0">
+                                                                    <input type="number" step=".01" class="form-control" name="product_variant_discounted_price[]" style="min-width: 100px;" value="0" style="height: 34px;" placeholder="0">
                                                                 </td>
 
                                                                 <td class="text-center">
