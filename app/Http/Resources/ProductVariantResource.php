@@ -21,6 +21,7 @@ class ProductVariantResource extends JsonResource
             'product_id' => $this->product_id,
             'image' => $this->image,
             'color_id' => $this->color_id,
+            'unit_id' => $this->unit_id,
             'color_name' => $this->color_name,
             'size_id' => $this->size_id,
             'size_name' => $this->size_name,
