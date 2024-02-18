@@ -30,10 +30,8 @@
                                 <h4 class="card-title mb-3">General Information Form</h4>
                             </div>
                             <div class="col-lg-4 text-right">
-
                                 <a href="{{url('/home')}}" style="width: 130px;" class="btn btn-danger d-inline-block text-white m-2" type="submit"><i class="mdi mdi-cancel"></i> Cancel</a>
                                 <button class="btn btn-primary m-2" type="submit" style="width: 140px;"><i class="fas fa-save"></i> Update Info</button>
-
                             </div>
                         </div>
 
@@ -128,6 +126,31 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="form-group row">
+                                    <label for="tin" class="col-sm-2 col-form-label"><i class="far fa-file-alt"></i> TIN Certificate No</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="tin" name="tin" value="{{$data->tin}}" class="form-control" placeholder="TIN Certificate No">
+                                        <div class="invalid-feedback" style="display: block;">
+                                            @error('tin')
+                                                {{ $message }}
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="trade_license" class="col-sm-2 col-form-label"><i class="far fa-file-alt"></i> Trade License No</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="trade_license" name="trade_license" value="{{$data->trade_license}}" class="form-control" placeholder="Trade License No">
+                                        <div class="invalid-feedback" style="display: block;">
+                                            @error('trade_license')
+                                                {{ $message }}
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="form-group row">
                                     <label for="google_map_link" class="col-sm-2 col-form-label"><i class="fas fa-map-marker-alt"></i> Google Map Link</label>
                                     <div class="col-sm-10">

@@ -148,6 +148,8 @@ class GeneralInfoController extends Controller
             'contact' => $request->contact,
             'email' => $request->email,
             'address' => $request->address,
+            'tin' => $request->tin,
+            'trade_license' => $request->trade_license,
             'google_map_link' => $request->google_map_link,
             'play_store_link' => $request->play_store_link,
             'app_store_link' => $request->app_store_link,
