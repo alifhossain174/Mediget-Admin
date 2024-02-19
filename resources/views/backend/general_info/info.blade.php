@@ -163,13 +163,13 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
+                                <div class="form-group row d-none">
                                     <label for="play_store_link" class="col-sm-2 col-form-label"><i class="fab fa-google-play"></i> Play Store Link</label>
                                     <div class="col-sm-10">
                                         <input type="text" name="play_store_link" id="play_store_link" value="{{ $data->play_store_link }}" placeholder="https://play.google.com/store" class="form-control"/>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row d-none">
                                     <label for="app_store_link" class="col-sm-2 col-form-label"><i class="fab fa-apple" style="font-size: 16px;"></i> App Store Link</label>
                                     <div class="col-sm-10">
                                         <input type="text" name="app_store_link" id="app_store_link" value="{{ $data->app_store_link }}" placeholder="https://www.apple.com/app-store/" class="form-control"/>

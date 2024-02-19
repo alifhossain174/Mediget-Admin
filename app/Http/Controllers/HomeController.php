@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MobileApp;
 use App\Models\Order;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use App\Models\OrderPayment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\DataTables;
@@ -144,5 +147,43 @@ class HomeController extends Controller
                     ->make(true);
         }
         return view('backend.payment_histories');
+    }
+
+    public function mobileAppConfig(){
+        $data = MobileApp::where('id', 1)->first();
+        return view('backend.mobile_app', compact('data'));
+    }
+
+    public function updateMobileAppConfig(Request $request){
+
+        $data = MobileApp::where('id', 1)->first();
+
+        $image = $data->image;
+        if ($request->hasFile('image')){
+
+            if($data->image != '' && file_exists(public_path($data->image))){
+                unlink(public_path($data->image));
+            }
+
+            $get_image = $request->file('image');
+            $image_name = str::random(5) . time() . '.' . $get_image->getClientOriginalExtension();
+            $location = public_path('company_logo/');
+            $get_image->move($location, $image_name);
+            $image = "company_logo/" . $image_name;
+        }
+
+        MobileApp::where('id', 1)->update([
+            'image' => $image,
+            'title' => $request->title,
+            'description' => $request->description,
+            'play_store_link' => $request->play_store_link,
+            'app_store_link' => $request->app_store_link,
+            'btn_text' => $request->btn_text,
+            'status' => $request->status,
+            'updated_at' => Carbon::now()
+        ]);
+
+        Toastr::success('Information Updated', 'Successfully');
+        return back();
     }
 }

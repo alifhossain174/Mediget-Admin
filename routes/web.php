@@ -94,6 +94,8 @@ require 'systemRoutes.php';
 Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
 
     Route::get('/view/payment/history', [HomeController::class, 'viewPaymentHistory'])->name('ViewPaymentHistory');
+    Route::get('/mobile/app/config', [HomeController::class, 'mobileAppConfig'])->name('MobileAppConfig');
+    Route::post('/update/mobile/app/config', [HomeController::class, 'updateMobileAppConfig'])->name('UpdateMobileAppConfig');
 
     // category routes
     Route::get('/add/new/category', [CategoryController::class, 'addNewCategory'])->name('AddNewCategory');
