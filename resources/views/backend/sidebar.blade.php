@@ -14,6 +14,12 @@
 
 
     <hr style="border-color: #c8c8c836; margin-top: 12px; margin-bottom: 12px;">
+    <li class="menu-title" style="color: khaki; text-shadow: 1px 1px 2px black;">Service Modules</li>
+    <li><a href="{{ url('/service/config') }}"><i class="feather-settings"></i><span>Service Config</span></a></li>
+    <li><a href="{{ url('/nursing/service/requests') }}"><i class="mdi mdi-doctor"></i><span>Nursing Service Req.</span></a></li>
+
+
+    <hr style="border-color: #c8c8c836; margin-top: 12px; margin-bottom: 12px;">
     <li class="menu-title" style="color: khaki; text-shadow: 1px 1px 2px black;">E-commerce Modules</li>
     <li>
         <a href="javascript: void(0);" class="has-arrow"><i class="feather-settings"></i><span>Config</span></a>

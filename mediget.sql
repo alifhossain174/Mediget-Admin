@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2024 at 10:30 AM
+-- Generation Time: Feb 19, 2024 at 01:02 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -1208,7 +1208,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (100, '2024_02_07_105306_create_medicine_generics_table', 50),
 (101, '2024_02_07_123714_create_diseases_table', 51),
 (102, '2024_02_08_113326_create_medicine_types_table', 52),
-(103, '2024_02_19_095015_create_mobile_apps_table', 53);
+(103, '2024_02_19_095015_create_mobile_apps_table', 53),
+(104, '2024_02_19_162344_create_services_table', 54);
 
 -- --------------------------------------------------------
 
@@ -1234,7 +1235,7 @@ CREATE TABLE `mobile_apps` (
 --
 
 INSERT INTO `mobile_apps` (`id`, `image`, `title`, `description`, `play_store_link`, `app_store_link`, `btn_text`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'company_logo/Kw0TJ1708334847.avif', 'Download the Mediget mobile app', 'Order medicine from the mobile app. Enter your mobile number to receive the app download link.', 'https://play.google.com/store/apps', 'https://www.apple.com/app-store/', 'Send Link', 1, '2024-02-19 04:14:35', '2024-02-19 09:30:35');
+(1, 'company_logo/YtD8U1708335254.avif', 'Download the Mediget mobile app', 'Order medicine from the mobile app. Enter your mobile number to receive the app download link.', 'https://play.google.com/store/apps', 'https://www.apple.com/app-store', 'Send Link', 1, '2024-02-19 04:14:35', '2024-02-19 09:55:22');
 
 -- --------------------------------------------------------
 
@@ -6786,6 +6787,40 @@ INSERT INTO `role_permissions` (`id`, `role_id`, `role_name`, `permission_id`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `services`
+--
+
+CREATE TABLE `services` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `banner` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `button_text` varchar(255) DEFAULT NULL,
+  `slug` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
+  `serial` double NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `services`
+--
+
+INSERT INTO `services` (`id`, `image`, `banner`, `title`, `description`, `button_text`, `slug`, `status`, `serial`, `created_at`, `updated_at`) VALUES
+(1, 'service/UmZ9m1708343351.png', NULL, 'Nursing Service', 'We Provide Best Service', NULL, '', 1, 1, NULL, '2024-02-19 11:49:38'),
+(2, 'service/o59yv1708343449.png', NULL, 'Doctor Appoinment', 'We Provide Best Service', NULL, '', 1, 1, NULL, '2024-02-19 11:50:49'),
+(3, 'service/hnNNR1708343497.png', NULL, 'Ambulance Service', 'We Provide Best Service', NULL, '', 1, 1, NULL, '2024-02-19 11:51:37'),
+(4, 'service/kEO711708343636.png', NULL, 'Pharmacist Service', 'Coming Soon', NULL, '', 1, 1, NULL, '2024-02-19 11:53:56'),
+(5, 'service/LEtkt1708343645.png', NULL, 'Diagonistic Service', 'Coming Soon', NULL, '', 1, 1, NULL, '2024-02-19 11:54:05'),
+(6, 'service/fQyvm1708343669.png', 'service/kNxaJ1708343867.png', 'Upload your prescription', NULL, 'Upload Prescription', '', 1, 1, NULL, '2024-02-19 11:59:26'),
+(7, 'service/wTPqF1708343922.png', 'service/ejGld1708343945.png', 'Get Doctor Appoinment', NULL, 'Get Your Appointment', '', 1, 1, NULL, '2024-02-19 12:01:52'),
+(8, 'service/8vtMN1708344139.png', 'service/f0Q5o1708344088.jpg', 'Looking for medicine from abroad?', NULL, NULL, '', 1, 1, NULL, '2024-02-19 12:02:34');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `shipping_infos`
 --
 
@@ -6861,8 +6896,8 @@ CREATE TABLE `sms_gateways` (
 --
 
 INSERT INTO `sms_gateways` (`id`, `image`, `provider_name`, `api_endpoint`, `api_key`, `secret_key`, `sender_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'ElitBuzz', 'https://880sms.com/smsapi', 'C20095786bf436075.858353215', NULL, 'GenericCommerceV1', 0, '2023-06-13 03:43:26', '2023-10-22 06:01:53'),
-(2, NULL, 'Reve', 'https://smpp.ajuratech.com:7790/sendtext', '69cff06995a4a85', '20cdf1d28', 'GenericCommerceV1', 1, '2023-06-13 03:43:26', '2023-10-22 06:01:53');
+(1, NULL, 'ElitBuzz', 'https://880sms.com/smsapi', 'C20095786bf436075.858353215', NULL, 'GenericCommerceV1', 0, '2023-06-13 03:43:26', '2024-02-19 09:44:21'),
+(2, NULL, 'Reve', 'https://smpp.ajuratech.com:7790/sendtext', '69cff06995a4a85', '20cdf1d28', 'GenericCommerceV1', 1, '2023-06-13 03:43:26', '2024-02-19 09:44:21');
 
 -- --------------------------------------------------------
 
@@ -12762,6 +12797,12 @@ ALTER TABLE `role_permissions`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `services`
+--
+ALTER TABLE `services`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `shipping_infos`
 --
 ALTER TABLE `shipping_infos`
@@ -13066,7 +13107,7 @@ ALTER TABLE `medicine_types`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`
@@ -13187,6 +13228,12 @@ ALTER TABLE `promo_codes`
 --
 ALTER TABLE `role_permissions`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `services`
+--
+ALTER TABLE `services`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `shipping_infos`

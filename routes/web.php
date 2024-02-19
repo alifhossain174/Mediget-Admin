@@ -29,6 +29,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserRoleController;
 use App\Http\Controllers\DeliveryChargeController;
 use App\Http\Controllers\CustomPageController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Middleware\CheckUserType;
 
@@ -382,6 +383,12 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('delete/custom/page/{slug}', [CustomPageController::class, 'deleteCustomPage'])->name('DeleteCustomPage');
     Route::get('edit/custom/page/{slug}', [CustomPageController::class, 'editCustomPage'])->name('EditCustomPage');
     Route::post('update/custom/page', [CustomPageController::class, 'updateCustomPage'])->name('UpdateCustomPage');
+
+
+    // services
+    Route::get('service/config', [ServiceController::class, 'serviceConfig'])->name('ServiceConfig');
+    Route::get('edit/service/{id}', [ServiceController::class, 'editService'])->name('EditService');
+    Route::post('update/service/config', [ServiceController::class, 'updateService'])->name('UpdateService');
 
 
     // generate report

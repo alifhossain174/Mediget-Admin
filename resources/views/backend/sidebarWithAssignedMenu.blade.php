@@ -113,6 +113,14 @@
     @if(checkAuth("mobile/app/config")) <li><a href="{{ url('/mobile/app/config') }}"><i class="mdi mdi-cellphone-android"></i><span>Mobile App</span></a></li> @endif
 
 
+    @if(checkAuth("service/config") || checkAuth("nursing/service/requests"))
+    <hr style="border-color: #c8c8c836; margin-top: 12px; margin-bottom: 12px;">
+    <li class="menu-title" style="color: khaki; text-shadow: 1px 1px 2px black;">Service Modules</li>
+    @endif
+    @if(checkAuth("service/config")) <li><a href="{{ url('/service/config') }}"><i class="feather-settings"></i><span>Service Config</span></a></li> @endif
+    @if(checkAuth("nursing/service/requests")) <li><a href="{{ url('/nursing/service/requests') }}"><i class="mdi mdi-doctor"></i><span>Nursing Service Req.</span></a></li> @endif
+
+
     @if(count($configModule) > 0 || count($categoryModule) > 0 || count($subCategoryModule) > 0 || count($childCategoryModule) > 0 || count($productModule) > 0 || count($orderModule) > 0 || count($promoCodeModule) > 0 || count($pushNotificationModule) > 0 || count($smsServiceModule) > 0 || count($systemModule) > 0 || checkAuth("view/all/customers") || checkAuth("view/customers/wishlist") || checkAuth("view/delivery/charges") || count($reportModule) > 0 || count($backupModule) > 0)
     <hr style="border-color: #c8c8c836; margin-top: 12px; margin-bottom: 12px;">
     <li class="menu-title" style="color: khaki; text-shadow: 1px 1px 2px black;">E-commerce Modules</li>
