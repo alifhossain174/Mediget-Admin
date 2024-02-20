@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2024 at 07:16 AM
+-- Generation Time: Feb 20, 2024 at 09:36 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -1211,7 +1211,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (103, '2024_02_19_095015_create_mobile_apps_table', 53),
 (104, '2024_02_19_162344_create_services_table', 54),
 (105, '2024_02_20_095324_create_nursing_services_table', 55),
-(107, '2024_02_20_104759_create_nursing_service_requests_table', 56);
+(107, '2024_02_20_104759_create_nursing_service_requests_table', 56),
+(108, '2024_02_20_142642_create_prescriptions_table', 57);
 
 -- --------------------------------------------------------
 
@@ -1300,6 +1301,15 @@ CREATE TABLE `nursing_service_requests` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `nursing_service_requests`
+--
+
+INSERT INTO `nursing_service_requests` (`id`, `service_id`, `service_date_time`, `patient_name`, `patient_phone`, `remarks`, `slug`, `status`, `created_at`, `updated_at`) VALUES
+(1, 3, '24-02-20 12:17', 'Hanae Hogan', '+1 (977) 305-3094', 'In unde et qui lauda', '3BJiX1708409856', 0, '2024-02-20 06:17:36', NULL),
+(2, 3, '24-02-20 12:17', 'Philip Ochoa', '+1 (826) 186-5406', 'Fugiat eu accusamus', 'RMeim1708409871', 3, '2024-02-20 06:17:51', '2024-02-20 06:48:08'),
+(3, 5, '24-02-20 12:17', 'Samantha Caldwell', '+1 (738) 781-9176', 'Voluptate qui doloru', '96PxP1708409876', 2, '2024-02-20 06:17:56', '2024-02-20 06:50:22');
 
 -- --------------------------------------------------------
 
@@ -2007,6 +2017,24 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 (102, 'App\\Models\\User', 45, 'GenericCommerceV1', 'a84b18d6bd3cf1977d5e6c72edd5fbbab8143ab437b5ed7ef876190ff72e7806', '[\"*\"]', '2023-11-07 09:03:17', '2023-11-07 05:48:16', '2023-11-07 09:03:17'),
 (103, 'App\\Models\\User', 45, 'GenericCommerceV1', '1367baa5b2ce8f17a0c485a66aca158e18bbe4b16edb804715643b270bb8ce7d', '[\"*\"]', NULL, '2023-11-12 10:51:38', '2023-11-12 10:51:38'),
 (104, 'App\\Models\\User', 45, 'GenericCommerceV1', '495ae91f603d1d4408e72221e58598332b95c158e57805be5ade629e13dcffb4', '[\"*\"]', '2023-12-18 11:56:47', '2023-12-18 11:56:15', '2023-12-18 11:56:47');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prescriptions`
+--
+
+CREATE TABLE `prescriptions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `patient_name` varchar(255) DEFAULT NULL,
+  `patient_phone` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `attachment` varchar(255) DEFAULT NULL,
+  `slug` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=>Just Uploaded; 1=>Checking; 2=>In Transit; 3=>Delivered; 4=>Cancelled',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -6861,7 +6889,7 @@ INSERT INTO `services` (`id`, `image`, `banner`, `title`, `description`, `button
 (3, 'service/3o3Zc1708346074.png', NULL, 'Ambulance Service', 'Coming Soon', NULL, '', 1, 1, NULL, '2024-02-20 03:48:09'),
 (4, 'service/qcVra1708346124.png', NULL, 'Pharmacist Service', 'Coming Soon', NULL, '', 1, 1, NULL, '2024-02-19 12:35:24'),
 (5, 'service/BUjbX1708346277.png', NULL, 'Diagonistic Service', 'Coming Soon', NULL, '', 1, 1, NULL, '2024-02-19 12:37:57'),
-(6, 'service/fQyvm1708343669.png', 'service/kNxaJ1708343867.png', 'Upload your prescription', NULL, 'Upload Prescription', '', 1, 1, NULL, '2024-02-19 11:59:26'),
+(6, 'service/fQyvm1708343669.png', 'service/kNxaJ1708343867.png', 'Upload your prescription', NULL, 'Upload Prescription', '', 1, 1, NULL, '2024-02-20 07:03:17'),
 (7, 'service/wTPqF1708343922.png', 'service/ejGld1708343945.png', 'Get Doctor Appoinment', NULL, 'Get Your Appointment', '', 1, 1, NULL, '2024-02-19 12:01:52'),
 (8, 'service/8vtMN1708344139.png', 'service/f0Q5o1708344088.jpg', 'Looking for medicine from abroad?', NULL, NULL, '', 1, 1, NULL, '2024-02-19 12:02:34');
 
@@ -12790,6 +12818,12 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `prescriptions`
+--
+ALTER TABLE `prescriptions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
@@ -13166,7 +13200,7 @@ ALTER TABLE `medicine_types`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`
@@ -13190,7 +13224,7 @@ ALTER TABLE `nursing_services`
 -- AUTO_INCREMENT for table `nursing_service_requests`
 --
 ALTER TABLE `nursing_service_requests`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -13233,6 +13267,12 @@ ALTER TABLE `permission_routes`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+
+--
+-- AUTO_INCREMENT for table `prescriptions`
+--
+ALTER TABLE `prescriptions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `products`
