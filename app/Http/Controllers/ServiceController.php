@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\NursingService;
 use App\Models\NursingServiceRequest;
+use App\Models\Prescription;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -223,6 +224,102 @@ class ServiceController extends Controller
     public function completeNursingServiceRequest($id){
         NursingServiceRequest::where('id', $id)->update([
             'status' => 2,
+            'updated_at' => Carbon::now(),
+        ]);
+        return response()->json(['success'=>'Updated Successfully.']);
+    }
+
+    public function viewUploadedPrescriptions(Request $request){
+        if ($request->ajax()) {
+
+            $data = DB::table('prescriptions')
+                ->orderBy('id', 'desc')
+                ->get();
+
+            return Datatables::of($data)
+                    ->editColumn('status', function($data) {
+                        if($data->status == 0){
+                            return '<button class="btn btn-sm btn-warning rounded">Just Uploaded</button>';
+                        } else if($data->status == 1) {
+                            return '<button class="btn btn-sm btn-info rounded">Checking</button>';
+                        } else if($data->status == 2){
+                            return '<button class="btn btn-sm btn-info rounded">In Transit</button>';
+                        } else if($data->status == 3){
+                            return '<button class="btn btn-sm btn-success rounded">Delivered</button>';
+                        } else {
+                            return '<button class="btn btn-sm btn-danger rounded">Cancelled</button>';
+                        }
+                    })
+                    ->editColumn('attachment', function($data) {
+                        if($data->attachment && file_exists(public_path($data->attachment))){
+                            return "<a href='".url($data->attachment)."' target='_blank' class='btn btn-sm btn-success'>View Prescription</a>";
+                        }
+                    })
+                    ->editColumn('created_at', function($data) {
+                        if($data->created_at)
+                            return date("Y-m-d H:i a", strtotime($data->created_at));
+                    })
+                    ->addIndexColumn()
+                    ->addColumn('action', function($data){
+                        $btn = '';
+
+                        if($data->status == 0){
+                            $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$data->id.'" data-original-title="In Progress" class="mb-1 btn-sm btn-info rounded inProgress"><i class="fas fa-check"></i> Approve</a>';
+                            $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$data->id.'" data-original-title="Cancel" class="mb-1 btn-sm btn-danger rounded warning cancelBtn"><i class="fas fa-times"></i> Cancel</a>';
+                        }
+                        if($data->status == 1){
+                            $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$data->id.'" data-original-title="In Transit" class="mb-1 btn-sm btn-info rounded completeBtn"><i class="fas fa-check"></i> In Transit</a>';
+                            $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$data->id.'" data-original-title="Cancel" class="mb-1 btn-sm btn-danger rounded warning cancelBtn"><i class="fas fa-times"></i> Cancel</a>';
+                        }
+                        if($data->status == 2){
+                            $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$data->id.'" data-original-title="Delivered" class="mb-1 btn-sm btn-success rounded deliverBtn"><i class="fas fa-check"></i> Delivered</a>';
+                        }
+
+                        $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$data->id.'" data-original-title="Delete" class="btn-sm btn-danger rounded deleteBtn"><i class="fas fa-trash-alt"></i></a>';
+                        return $btn;
+                    })
+                    ->rawColumns(['action', 'status', 'attachment'])
+                    ->make(true);
+        }
+        return view('backend.service.uploaded_prescriptions');
+    }
+
+    public function deleteUploadedPrescription($id){
+        $data = Prescription::where('id', $id)->first();
+        if($data->attachment && file_exists(public_path($data->attachment))){
+            unlink(public_path($data->attachment));
+        }
+        $data->delete();
+        return response()->json(['success'=>'Deleted Successfully.']);
+    }
+
+    public function approveUploadedPrescription($id){
+        Prescription::where('id', $id)->update([
+            'status' => 1,
+            'updated_at' => Carbon::now(),
+        ]);
+        return response()->json(['success'=>'Updated Successfully.']);
+    }
+
+    public function cancelUploadedPrescription($id){
+        Prescription::where('id', $id)->update([
+            'status' => 4,
+            'updated_at' => Carbon::now(),
+        ]);
+        return response()->json(['success'=>'Updated Successfully.']);
+    }
+
+    public function completeUploadedPrescription($id){
+        Prescription::where('id', $id)->update([
+            'status' => 2,
+            'updated_at' => Carbon::now(),
+        ]);
+        return response()->json(['success'=>'Updated Successfully.']);
+    }
+
+    public function deliverUploadedPrescription($id){
+        Prescription::where('id', $id)->update([
+            'status' => 3,
             'updated_at' => Carbon::now(),
         ]);
         return response()->json(['success'=>'Updated Successfully.']);

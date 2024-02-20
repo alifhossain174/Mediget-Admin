@@ -23,6 +23,7 @@
             <li><a href="{{ url('/nursing/service/requests') }}">Service Requests</a></li>
         </ul>
     </li>
+    <li><a href="{{ url('/view/uploaded/prescriptions') }}"><i class="feather-file-text"></i><span>Uploaded Prescriptions</span></a></li>
 
 
     <hr style="border-color: #c8c8c836; margin-top: 12px; margin-bottom: 12px;">

@@ -403,6 +403,14 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('cancel/nursing/service/request/{id}', [ServiceController::class, 'cancelNursingServiceRequest'])->name('CancelNursingServiceRequest');
     Route::get('complete/nursing/service/request/{id}', [ServiceController::class, 'completeNursingServiceRequest'])->name('CompleteNursingServiceRequest');
 
+    // prescription services
+    Route::get('view/uploaded/prescriptions', [ServiceController::class, 'viewUploadedPrescriptions'])->name('ViewUploadedPrescriptions');
+    Route::get('delete/uploaded/prescription/{id}', [ServiceController::class, 'deleteUploadedPrescription'])->name('DeleteUploadedPrescription');
+    Route::get('approve/uploaded/prescription/{id}', [ServiceController::class, 'approveUploadedPrescription'])->name('ApproveUploadedPrescription');
+    Route::get('cancel/uploaded/prescription/{id}', [ServiceController::class, 'cancelUploadedPrescription'])->name('CancelUploadedPrescription');
+    Route::get('complete/uploaded/prescription/{id}', [ServiceController::class, 'completeUploadedPrescription'])->name('CompleteUploadedPrescription');
+    Route::get('deliver/uploaded/prescription/{id}', [ServiceController::class, 'deliverUploadedPrescription'])->name('DeliverUploadedPrescription');
+
 
     // generate report
     Route::get('sales/report', [ReportController::class, 'salesReport'])->name('SalesReport');

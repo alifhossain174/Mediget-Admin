@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2024 at 09:36 AM
+-- Generation Time: Feb 20, 2024 at 11:24 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -1291,6 +1291,7 @@ INSERT INTO `nursing_services` (`id`, `name`, `price`, `slug`, `status`, `serial
 
 CREATE TABLE `nursing_service_requests` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `service_id` bigint(20) UNSIGNED DEFAULT NULL,
   `service_date_time` varchar(255) DEFAULT NULL,
   `patient_name` varchar(255) DEFAULT NULL,
@@ -1306,10 +1307,10 @@ CREATE TABLE `nursing_service_requests` (
 -- Dumping data for table `nursing_service_requests`
 --
 
-INSERT INTO `nursing_service_requests` (`id`, `service_id`, `service_date_time`, `patient_name`, `patient_phone`, `remarks`, `slug`, `status`, `created_at`, `updated_at`) VALUES
-(1, 3, '24-02-20 12:17', 'Hanae Hogan', '+1 (977) 305-3094', 'In unde et qui lauda', '3BJiX1708409856', 0, '2024-02-20 06:17:36', NULL),
-(2, 3, '24-02-20 12:17', 'Philip Ochoa', '+1 (826) 186-5406', 'Fugiat eu accusamus', 'RMeim1708409871', 3, '2024-02-20 06:17:51', '2024-02-20 06:48:08'),
-(3, 5, '24-02-20 12:17', 'Samantha Caldwell', '+1 (738) 781-9176', 'Voluptate qui doloru', '96PxP1708409876', 2, '2024-02-20 06:17:56', '2024-02-20 06:50:22');
+INSERT INTO `nursing_service_requests` (`id`, `user_id`, `service_id`, `service_date_time`, `patient_name`, `patient_phone`, `remarks`, `slug`, `status`, `created_at`, `updated_at`) VALUES
+(1, NULL, 3, '24-02-20 12:17', 'Hanae Hogan', '+1 (977) 305-3094', 'In unde et qui lauda', '3BJiX1708409856', 0, '2024-02-20 06:17:36', NULL),
+(2, NULL, 3, '24-02-20 12:17', 'Philip Ochoa', '+1 (826) 186-5406', 'Fugiat eu accusamus', 'RMeim1708409871', 3, '2024-02-20 06:17:51', '2024-02-20 10:13:23'),
+(3, NULL, 5, '24-02-20 12:17', 'Samantha Caldwell', '+1 (738) 781-9176', 'Voluptate qui doloru', '96PxP1708409876', 2, '2024-02-20 06:17:56', '2024-02-20 06:50:22');
 
 -- --------------------------------------------------------
 
@@ -2035,6 +2036,14 @@ CREATE TABLE `prescriptions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `prescriptions`
+--
+
+INSERT INTO `prescriptions` (`id`, `patient_name`, `patient_phone`, `address`, `attachment`, `slug`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'Raja Porter', '+1 (653) 202-7795', 'Et in aut doloremque', 'prescriptions/1nIJz1708419761.png', 'qecwL1708419761', 4, '2024-02-20 09:02:41', '2024-02-20 10:15:05'),
+(3, 'Philip Hudson', '+1 (114) 384-2904', 'Mollitia laudantium', 'prescriptions/AbbNx1708419886.webp', '4tTMG1708419887', 3, '2024-02-20 09:04:47', '2024-02-20 10:17:57');
 
 -- --------------------------------------------------------
 
@@ -13272,7 +13281,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `prescriptions`
 --
 ALTER TABLE `prescriptions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `products`

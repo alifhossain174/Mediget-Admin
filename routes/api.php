@@ -23,6 +23,9 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('social/login/credentials', [AuthenticationController::class, 'socialLoginCredentials']);
     Route::post('social/login', [AuthenticationController::class, 'socialLogin']);
 
+    // upload prescription
+    Route::post('upload/prescription', [ApiController::class, 'uploadPrescription']);
+
 
     Route::post('subscribe/for/updates', [ApiController::class, 'subscriptionForUpdates']);
     Route::post('upload/profile/photo', [ProfileController::class, 'uploadProfilePhoto']);
