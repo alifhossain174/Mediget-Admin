@@ -118,7 +118,15 @@
     <li class="menu-title" style="color: khaki; text-shadow: 1px 1px 2px black;">Service Modules</li>
     @endif
     @if(checkAuth("service/config")) <li><a href="{{ url('/service/config') }}"><i class="feather-settings"></i><span>Service Config</span></a></li> @endif
-    @if(checkAuth("nursing/service/requests")) <li><a href="{{ url('/nursing/service/requests') }}"><i class="mdi mdi-doctor"></i><span>Nursing Service Req.</span></a></li> @endif
+    @if(checkAuth("nursing/service/types") || checkAuth("nursing/service/requests"))
+    <li>
+        <a href="javascript: void(0);" class="has-arrow"><i class="mdi mdi-doctor"></i><span>Nursing Service</span></a>
+        <ul class="sub-menu" aria-expanded="false">
+            @if(checkAuth("nursing/service/types")) <li><a href="{{ url('/nursing/service/types') }}">Service Types</a></li> @endif
+            @if(checkAuth("nursing/service/requests")) <li><a href="{{ url('/nursing/service/requests') }}">Service Requests</a></li> @endif
+        </ul>
+    </li>
+    @endif
 
 
     @if(count($configModule) > 0 || count($categoryModule) > 0 || count($subCategoryModule) > 0 || count($childCategoryModule) > 0 || count($productModule) > 0 || count($orderModule) > 0 || count($promoCodeModule) > 0 || count($pushNotificationModule) > 0 || count($smsServiceModule) > 0 || count($systemModule) > 0 || checkAuth("view/all/customers") || checkAuth("view/customers/wishlist") || checkAuth("view/delivery/charges") || count($reportModule) > 0 || count($backupModule) > 0)

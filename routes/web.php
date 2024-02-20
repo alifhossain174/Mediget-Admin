@@ -391,6 +391,19 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::post('update/service/config', [ServiceController::class, 'updateService'])->name('UpdateService');
 
 
+    // nursing service
+    Route::get('nursing/service/types', [ServiceController::class, 'nursingServiceTypes'])->name('NursingServiceTypes');
+    Route::post('save/nursing/service/type', [ServiceController::class, 'saveNursingServiceType'])->name('SaveNursingServiceType');
+    Route::get('delete/nursing/service/{id}', [ServiceController::class, 'deleteNursingServiceType'])->name('DeleteNursingServiceType');
+    Route::get('get/nursing/service/info/{id}', [ServiceController::class, 'getNursingServiceInfo'])->name('GetNursingServiceInfo');
+    Route::post('update/nursing/service', [ServiceController::class, 'updateNursingService'])->name('UpdateNursingService');
+    Route::get('nursing/service/requests', [ServiceController::class, 'nursingServiceRequests'])->name('NursingServiceRequests');
+    Route::get('delete/nursing/service/request/{id}', [ServiceController::class, 'deleteNursingServiceRequest'])->name('DeleteNursingServiceRequest');
+    Route::get('approve/nursing/service/request/{id}', [ServiceController::class, 'approveNursingServiceRequest'])->name('ApproveNursingServiceRequest');
+    Route::get('cancel/nursing/service/request/{id}', [ServiceController::class, 'cancelNursingServiceRequest'])->name('CancelNursingServiceRequest');
+    Route::get('complete/nursing/service/request/{id}', [ServiceController::class, 'completeNursingServiceRequest'])->name('CompleteNursingServiceRequest');
+
+
     // generate report
     Route::get('sales/report', [ReportController::class, 'salesReport'])->name('SalesReport');
     Route::post('generate/sales/report', [ReportController::class, 'generateSalesReport'])->name('GenerateSalesReport');

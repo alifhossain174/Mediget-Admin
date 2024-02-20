@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2024 at 01:02 PM
+-- Generation Time: Feb 20, 2024 at 07:16 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -1209,7 +1209,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (101, '2024_02_07_123714_create_diseases_table', 51),
 (102, '2024_02_08_113326_create_medicine_types_table', 52),
 (103, '2024_02_19_095015_create_mobile_apps_table', 53),
-(104, '2024_02_19_162344_create_services_table', 54);
+(104, '2024_02_19_162344_create_services_table', 54),
+(105, '2024_02_20_095324_create_nursing_services_table', 55),
+(107, '2024_02_20_104759_create_nursing_service_requests_table', 56);
 
 -- --------------------------------------------------------
 
@@ -1250,6 +1252,51 @@ CREATE TABLE `notifications` (
   `topic` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` longtext DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nursing_services`
+--
+
+CREATE TABLE `nursing_services` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `price` varchar(255) DEFAULT NULL,
+  `slug` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=>Inactive; 1=>Active',
+  `serial` double NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `nursing_services`
+--
+
+INSERT INTO `nursing_services` (`id`, `name`, `price`, `slug`, `status`, `serial`, `created_at`, `updated_at`) VALUES
+(3, 'Dressing & Injection', '550 BDT', 'OHY251708402702', 1, 1, '2024-02-20 04:18:22', '2024-02-20 04:40:43'),
+(4, 'Injection', '250 BDT', 'fMlxt1708402948', 1, 1, '2024-02-20 04:22:28', '2024-02-20 04:40:40'),
+(5, 'Dressing', '300 BDT', 'rZoJe1708402957', 1, 1, '2024-02-20 04:22:37', '2024-02-20 04:40:37');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nursing_service_requests`
+--
+
+CREATE TABLE `nursing_service_requests` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `service_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `service_date_time` varchar(255) DEFAULT NULL,
+  `patient_name` varchar(255) DEFAULT NULL,
+  `patient_phone` varchar(255) DEFAULT NULL,
+  `remarks` longtext DEFAULT NULL,
+  `slug` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=>Pending; 1=>In Progress; 2=>Complete; 3=>Cancelled',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -6809,11 +6856,11 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `image`, `banner`, `title`, `description`, `button_text`, `slug`, `status`, `serial`, `created_at`, `updated_at`) VALUES
-(1, 'service/UmZ9m1708343351.png', NULL, 'Nursing Service', 'We Provide Best Service', NULL, '', 1, 1, NULL, '2024-02-19 11:49:38'),
-(2, 'service/o59yv1708343449.png', NULL, 'Doctor Appoinment', 'We Provide Best Service', NULL, '', 1, 1, NULL, '2024-02-19 11:50:49'),
-(3, 'service/hnNNR1708343497.png', NULL, 'Ambulance Service', 'We Provide Best Service', NULL, '', 1, 1, NULL, '2024-02-19 11:51:37'),
-(4, 'service/kEO711708343636.png', NULL, 'Pharmacist Service', 'Coming Soon', NULL, '', 1, 1, NULL, '2024-02-19 11:53:56'),
-(5, 'service/LEtkt1708343645.png', NULL, 'Diagonistic Service', 'Coming Soon', NULL, '', 1, 1, NULL, '2024-02-19 11:54:05'),
+(1, 'service/5zxCh1708346362.png', NULL, 'Nursing Service', 'We Provide Best Service', NULL, '', 1, 1, NULL, '2024-02-19 12:39:22'),
+(2, 'service/SuHYk1708345861.png', NULL, 'Doctor Appointment', 'We Provide Best Service', NULL, '', 1, 1, NULL, '2024-02-20 03:48:25'),
+(3, 'service/3o3Zc1708346074.png', NULL, 'Ambulance Service', 'Coming Soon', NULL, '', 1, 1, NULL, '2024-02-20 03:48:09'),
+(4, 'service/qcVra1708346124.png', NULL, 'Pharmacist Service', 'Coming Soon', NULL, '', 1, 1, NULL, '2024-02-19 12:35:24'),
+(5, 'service/BUjbX1708346277.png', NULL, 'Diagonistic Service', 'Coming Soon', NULL, '', 1, 1, NULL, '2024-02-19 12:37:57'),
 (6, 'service/fQyvm1708343669.png', 'service/kNxaJ1708343867.png', 'Upload your prescription', NULL, 'Upload Prescription', '', 1, 1, NULL, '2024-02-19 11:59:26'),
 (7, 'service/wTPqF1708343922.png', 'service/ejGld1708343945.png', 'Get Doctor Appoinment', NULL, 'Get Your Appointment', '', 1, 1, NULL, '2024-02-19 12:01:52'),
 (8, 'service/8vtMN1708344139.png', 'service/f0Q5o1708344088.jpg', 'Looking for medicine from abroad?', NULL, NULL, '', 1, 1, NULL, '2024-02-19 12:02:34');
@@ -12679,6 +12726,18 @@ ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `nursing_services`
+--
+ALTER TABLE `nursing_services`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `nursing_service_requests`
+--
+ALTER TABLE `nursing_service_requests`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -13107,7 +13166,7 @@ ALTER TABLE `medicine_types`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`
@@ -13120,6 +13179,18 @@ ALTER TABLE `mobile_apps`
 --
 ALTER TABLE `notifications`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `nursing_services`
+--
+ALTER TABLE `nursing_services`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `nursing_service_requests`
+--
+ALTER TABLE `nursing_service_requests`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `orders`
