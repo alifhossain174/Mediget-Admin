@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2024 at 08:04 AM
+-- Generation Time: Feb 25, 2024 at 10:25 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -1122,6 +1122,14 @@ CREATE TABLE `medicine_requests` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `medicine_requests`
+--
+
+INSERT INTO `medicine_requests` (`id`, `serial_no`, `user_id`, `name`, `phone`, `address`, `slug`, `status`, `created_at`, `updated_at`) VALUES
+(1, '1Mediget00004', 64, 'Richard Ortiz', '+1 (295) 219-8345', 'Proident reprehende', '98O7E1708849775', 0, '2024-02-25 08:29:35', NULL),
+(2, '2Mediget00004', 64, 'Imogene Sharp', '+1 (383) 421-7798', 'Qui dolorem enim eaq', 's02Fc1708850403', 3, '2024-02-25 08:40:03', '2024-02-25 09:06:51');
+
 -- --------------------------------------------------------
 
 --
@@ -1137,6 +1145,17 @@ CREATE TABLE `medicine_request_items` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `medicine_request_items`
+--
+
+INSERT INTO `medicine_request_items` (`id`, `medicine_request_id`, `meicine_name`, `qty`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Lionel Carrillo 50MG', 1, 'zNQLV1708849775', '2024-02-25 08:29:35', NULL),
+(2, 1, 'Lionel Carrillo 100MG', 2, 'jkzl51708849775', '2024-02-25 08:29:35', NULL),
+(3, 1, 'Lionel Carrillo 200MG', 3, 'SPeol1708849775', '2024-02-25 08:29:35', NULL),
+(4, 2, 'Celeste Mcclain 20mg', 10, 'ahNrN1708850403', '2024-02-25 08:40:03', NULL),
+(5, 2, 'Celeste Mcclain 100mg', 20, 'Rz6T01708850403', '2024-02-25 08:40:03', NULL);
 
 -- --------------------------------------------------------
 
@@ -1346,7 +1365,7 @@ CREATE TABLE `nursing_service_requests` (
 --
 
 INSERT INTO `nursing_service_requests` (`id`, `serial_no`, `user_id`, `service_id`, `service_date_time`, `patient_name`, `patient_phone`, `remarks`, `slug`, `status`, `created_at`, `updated_at`) VALUES
-(1, '1Mediget00002', 64, 3, '24-02-25 10:18', 'Wilma York', '+1 (678) 803-9192', 'Sed qui eum perferen', 'qxIq81708834732', 0, '2024-02-25 04:18:52', '2024-02-25 04:56:49'),
+(1, '1Mediget00002', 64, 3, '24-02-25 10:18', 'Wilma York', '+1 (678) 803-9192', 'Sed qui eum perferen', 'qxIq81708834732', 0, '2024-02-25 04:18:52', '2024-02-25 07:13:25'),
 (3, '3Mediget00004', 64, 4, '24-02-25 10:18', 'Tamekah Rocha', '+1 (114) 793-5236', 'Voluptas nobis non s', 'ZfKHu1708834739', 0, '2024-02-25 04:18:59', NULL);
 
 -- --------------------------------------------------------
@@ -2082,7 +2101,8 @@ CREATE TABLE `prescriptions` (
 
 INSERT INTO `prescriptions` (`id`, `serial_no`, `user_id`, `patient_name`, `patient_phone`, `address`, `attachment`, `slug`, `status`, `created_at`, `updated_at`) VALUES
 (1, '1Mediget00002', 64, 'Keith Mcpherson', '+1 (677) 605-8261', 'In dolor anim quidem', 'prescriptions/NWHYU1708838129.png', 'EVneW1708838129', 0, '2024-02-25 05:15:29', NULL),
-(2, '2Mediget00003', 64, 'Md Fahim Hossain', '+8801969005035', 'Itaque rem reprehend', 'prescriptions/4szMO1708840634.jpg', 'oJSke1708838137', 0, '2024-02-25 05:15:37', '2024-02-25 05:57:15');
+(2, '2Mediget00003', 64, 'Md Fahim Hossain', '+8801969005035', 'Itaque rem reprehend', 'prescriptions/4szMO1708840634.jpg', 'oJSke1708838137', 1, '2024-02-25 05:15:37', '2024-02-25 08:58:37'),
+(4, '4Mediget00004', 64, 'Amity Wong', '+1 (705) 552-5276', 'Dolores facilis dolo', 'prescriptions/UL57h1708846605.png', 'kxLXo1708846605', 0, '2024-02-25 07:36:45', NULL);
 
 -- --------------------------------------------------------
 
@@ -13255,13 +13275,13 @@ ALTER TABLE `medicine_generics`
 -- AUTO_INCREMENT for table `medicine_requests`
 --
 ALTER TABLE `medicine_requests`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `medicine_request_items`
 --
 ALTER TABLE `medicine_request_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `medicine_types`
@@ -13297,7 +13317,7 @@ ALTER TABLE `nursing_services`
 -- AUTO_INCREMENT for table `nursing_service_requests`
 --
 ALTER TABLE `nursing_service_requests`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -13345,7 +13365,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `prescriptions`
 --
 ALTER TABLE `prescriptions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `products`

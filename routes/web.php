@@ -411,6 +411,15 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('complete/uploaded/prescription/{id}', [ServiceController::class, 'completeUploadedPrescription'])->name('CompleteUploadedPrescription');
     Route::get('deliver/uploaded/prescription/{id}', [ServiceController::class, 'deliverUploadedPrescription'])->name('DeliverUploadedPrescription');
 
+    // medicine services
+    Route::get('view/medicine/requests', [ServiceController::class, 'viewMedicineRequests'])->name('ViewMedicineRequests');
+    Route::get('delete/medicine/request/{id}', [ServiceController::class, 'deleteMedicineRequest'])->name('DeleteMedicineRequest');
+    Route::get('approve/medicine/request/{id}', [ServiceController::class, 'approveMedicineRequest'])->name('ApproveMedicineRequest');
+    Route::get('cancel/medicine/request/{id}', [ServiceController::class, 'cancelMedicineRequest'])->name('CancelMedicineRequest');
+    Route::get('complete/medicine/request/{id}', [ServiceController::class, 'completeMedicineRequest'])->name('CompleteMedicineRequest');
+    Route::get('deliver/medicine/request/{id}', [ServiceController::class, 'deliverMedicineRequest'])->name('DeliverMedicineRequest');
+    Route::get('get/medicine/request/items/{id}', [ServiceController::class, 'getMedicineRequestItems'])->name('GetMedicineRequestItems');
+
 
     // generate report
     Route::get('sales/report', [ReportController::class, 'salesReport'])->name('SalesReport');

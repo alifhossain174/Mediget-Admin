@@ -128,6 +128,7 @@
     </li>
     @endif
     @if(checkAuth("view/uploaded/prescriptions")) <li><a href="{{ url('/view/uploaded/prescriptions') }}"><i class="feather-file-text"></i><span>Uploaded Prescriptions</span></a></li> @endif
+    @if(checkAuth("view/medicine/requests")) <li><a href="{{ url('/view/medicine/requests') }}"><i class="dripicons-medical"></i><span>Medicine Requests</span></a></li> @endif
 
 
     @if(count($configModule) > 0 || count($categoryModule) > 0 || count($subCategoryModule) > 0 || count($childCategoryModule) > 0 || count($productModule) > 0 || count($orderModule) > 0 || count($promoCodeModule) > 0 || count($pushNotificationModule) > 0 || count($smsServiceModule) > 0 || count($systemModule) > 0 || checkAuth("view/all/customers") || checkAuth("view/customers/wishlist") || checkAuth("view/delivery/charges") || count($reportModule) > 0 || count($backupModule) > 0)

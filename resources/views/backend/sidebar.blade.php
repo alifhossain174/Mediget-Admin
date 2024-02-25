@@ -24,6 +24,7 @@
         </ul>
     </li>
     <li><a href="{{ url('/view/uploaded/prescriptions') }}"><i class="feather-file-text"></i><span>Uploaded Prescriptions</span></a></li>
+    <li><a href="{{ url('/view/medicine/requests') }}"><i class="dripicons-medical"></i><span>Medicine Requests</span></a></li>
 
 
     <hr style="border-color: #c8c8c836; margin-top: 12px; margin-bottom: 12px;">
