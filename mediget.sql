@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2024 at 06:11 AM
+-- Generation Time: Feb 25, 2024 at 08:04 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -1106,6 +1106,41 @@ INSERT INTO `medicine_generics` (`id`, `name`, `brand_name`, `description`, `sta
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `medicine_requests`
+--
+
+CREATE TABLE `medicine_requests` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `serial_no` varchar(255) DEFAULT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `slug` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=>Just Uploaded; 1=>Checking; 2=>In Transit; 3=>Delivered; 4=>Cancelled',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medicine_request_items`
+--
+
+CREATE TABLE `medicine_request_items` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `medicine_request_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `meicine_name` varchar(255) DEFAULT NULL,
+  `qty` double NOT NULL DEFAULT 1,
+  `slug` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `medicine_types`
 --
 
@@ -1212,7 +1247,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (104, '2024_02_19_162344_create_services_table', 54),
 (105, '2024_02_20_095324_create_nursing_services_table', 55),
 (107, '2024_02_20_104759_create_nursing_service_requests_table', 56),
-(109, '2024_02_20_142642_create_prescriptions_table', 57);
+(109, '2024_02_20_142642_create_prescriptions_table', 57),
+(110, '2024_02_25_125636_create_medicine_requests_table', 58),
+(111, '2024_02_25_130225_create_medicine_request_items_table', 59);
 
 -- --------------------------------------------------------
 
@@ -2038,6 +2075,14 @@ CREATE TABLE `prescriptions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `prescriptions`
+--
+
+INSERT INTO `prescriptions` (`id`, `serial_no`, `user_id`, `patient_name`, `patient_phone`, `address`, `attachment`, `slug`, `status`, `created_at`, `updated_at`) VALUES
+(1, '1Mediget00002', 64, 'Keith Mcpherson', '+1 (677) 605-8261', 'In dolor anim quidem', 'prescriptions/NWHYU1708838129.png', 'EVneW1708838129', 0, '2024-02-25 05:15:29', NULL),
+(2, '2Mediget00003', 64, 'Md Fahim Hossain', '+8801969005035', 'Itaque rem reprehend', 'prescriptions/4szMO1708840634.jpg', 'oJSke1708838137', 0, '2024-02-25 05:15:37', '2024-02-25 05:57:15');
 
 -- --------------------------------------------------------
 
@@ -6889,12 +6934,12 @@ CREATE TABLE `services` (
 INSERT INTO `services` (`id`, `image`, `banner`, `title`, `description`, `button_text`, `slug`, `status`, `serial`, `created_at`, `updated_at`) VALUES
 (1, 'service/5zxCh1708346362.png', NULL, 'Nursing Service', 'We Provide Best Service', NULL, '', 1, 1, NULL, '2024-02-19 12:39:22'),
 (2, 'service/SuHYk1708345861.png', NULL, 'Doctor Appointment', 'We Provide Best Service', NULL, '', 1, 1, NULL, '2024-02-20 03:48:25'),
-(3, 'service/3o3Zc1708346074.png', NULL, 'Ambulance Service', 'Coming Soon', NULL, '', 1, 1, NULL, '2024-02-20 03:48:09'),
+(3, 'service/3o3Zc1708346074.png', NULL, 'Ambulance Service', 'Coming Soon', NULL, '', 1, 1, NULL, '2024-02-25 06:03:15'),
 (4, 'service/qcVra1708346124.png', NULL, 'Pharmacist Service', 'Coming Soon', NULL, '', 1, 1, NULL, '2024-02-19 12:35:24'),
 (5, 'service/BUjbX1708346277.png', NULL, 'Diagonistic Service', 'Coming Soon', NULL, '', 1, 1, NULL, '2024-02-19 12:37:57'),
 (6, 'service/fQyvm1708343669.png', 'service/kNxaJ1708343867.png', 'Upload your prescription', NULL, 'Upload Prescription', '', 1, 1, NULL, '2024-02-20 07:03:17'),
 (7, 'service/wTPqF1708343922.png', 'service/ejGld1708343945.png', 'Get Doctor Appoinment', NULL, 'Get Your Appointment', '', 1, 1, NULL, '2024-02-19 12:01:52'),
-(8, 'service/8vtMN1708344139.png', 'service/f0Q5o1708344088.jpg', 'Looking for medicine from abroad?', NULL, NULL, '', 1, 1, NULL, '2024-02-19 12:02:34');
+(8, 'service/8vtMN1708344139.png', 'service/f0Q5o1708344088.jpg', 'Looking for medicine from abroad?', NULL, NULL, '', 1, 1, NULL, '2024-02-25 05:59:04');
 
 -- --------------------------------------------------------
 
@@ -12734,6 +12779,18 @@ ALTER TABLE `medicine_generics`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `medicine_requests`
+--
+ALTER TABLE `medicine_requests`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `medicine_request_items`
+--
+ALTER TABLE `medicine_request_items`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `medicine_types`
 --
 ALTER TABLE `medicine_types`
@@ -13195,6 +13252,18 @@ ALTER TABLE `medicine_generics`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `medicine_requests`
+--
+ALTER TABLE `medicine_requests`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `medicine_request_items`
+--
+ALTER TABLE `medicine_request_items`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `medicine_types`
 --
 ALTER TABLE `medicine_types`
@@ -13204,7 +13273,7 @@ ALTER TABLE `medicine_types`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`
@@ -13276,7 +13345,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `prescriptions`
 --
 ALTER TABLE `prescriptions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `products`
