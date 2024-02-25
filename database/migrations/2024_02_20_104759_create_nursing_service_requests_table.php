@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('nursing_service_requests', function (Blueprint $table) {
             $table->id();
+            $table->string('serial_no')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('service_id')->nullable();
             $table->string('service_date_time')->nullable();

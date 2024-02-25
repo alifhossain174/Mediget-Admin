@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2024 at 11:24 AM
+-- Generation Time: Feb 25, 2024 at 06:11 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -1212,7 +1212,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (104, '2024_02_19_162344_create_services_table', 54),
 (105, '2024_02_20_095324_create_nursing_services_table', 55),
 (107, '2024_02_20_104759_create_nursing_service_requests_table', 56),
-(108, '2024_02_20_142642_create_prescriptions_table', 57);
+(109, '2024_02_20_142642_create_prescriptions_table', 57);
 
 -- --------------------------------------------------------
 
@@ -1291,6 +1291,7 @@ INSERT INTO `nursing_services` (`id`, `name`, `price`, `slug`, `status`, `serial
 
 CREATE TABLE `nursing_service_requests` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `serial_no` varchar(255) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `service_id` bigint(20) UNSIGNED DEFAULT NULL,
   `service_date_time` varchar(255) DEFAULT NULL,
@@ -1307,10 +1308,9 @@ CREATE TABLE `nursing_service_requests` (
 -- Dumping data for table `nursing_service_requests`
 --
 
-INSERT INTO `nursing_service_requests` (`id`, `user_id`, `service_id`, `service_date_time`, `patient_name`, `patient_phone`, `remarks`, `slug`, `status`, `created_at`, `updated_at`) VALUES
-(1, NULL, 3, '24-02-20 12:17', 'Hanae Hogan', '+1 (977) 305-3094', 'In unde et qui lauda', '3BJiX1708409856', 0, '2024-02-20 06:17:36', NULL),
-(2, NULL, 3, '24-02-20 12:17', 'Philip Ochoa', '+1 (826) 186-5406', 'Fugiat eu accusamus', 'RMeim1708409871', 3, '2024-02-20 06:17:51', '2024-02-20 10:13:23'),
-(3, NULL, 5, '24-02-20 12:17', 'Samantha Caldwell', '+1 (738) 781-9176', 'Voluptate qui doloru', '96PxP1708409876', 2, '2024-02-20 06:17:56', '2024-02-20 06:50:22');
+INSERT INTO `nursing_service_requests` (`id`, `serial_no`, `user_id`, `service_id`, `service_date_time`, `patient_name`, `patient_phone`, `remarks`, `slug`, `status`, `created_at`, `updated_at`) VALUES
+(1, '1Mediget00002', 64, 3, '24-02-25 10:18', 'Wilma York', '+1 (678) 803-9192', 'Sed qui eum perferen', 'qxIq81708834732', 0, '2024-02-25 04:18:52', '2024-02-25 04:56:49'),
+(3, '3Mediget00004', 64, 4, '24-02-25 10:18', 'Tamekah Rocha', '+1 (114) 793-5236', 'Voluptas nobis non s', 'ZfKHu1708834739', 0, '2024-02-25 04:18:59', NULL);
 
 -- --------------------------------------------------------
 
@@ -2027,6 +2027,8 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 
 CREATE TABLE `prescriptions` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `serial_no` varchar(255) DEFAULT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `patient_name` varchar(255) DEFAULT NULL,
   `patient_phone` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
@@ -2036,14 +2038,6 @@ CREATE TABLE `prescriptions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `prescriptions`
---
-
-INSERT INTO `prescriptions` (`id`, `patient_name`, `patient_phone`, `address`, `attachment`, `slug`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'Raja Porter', '+1 (653) 202-7795', 'Et in aut doloremque', 'prescriptions/1nIJz1708419761.png', 'qecwL1708419761', 4, '2024-02-20 09:02:41', '2024-02-20 10:15:05'),
-(3, 'Philip Hudson', '+1 (114) 384-2904', 'Mollitia laudantium', 'prescriptions/AbbNx1708419886.webp', '4tTMG1708419887', 3, '2024-02-20 09:04:47', '2024-02-20 10:17:57');
 
 -- --------------------------------------------------------
 
@@ -12414,7 +12408,8 @@ INSERT INTO `users` (`id`, `image`, `name`, `phone`, `email`, `email_verified_at
 (77, NULL, 'Roth Cleveland', NULL, 'finen@mailinator.com', '2024-02-06 05:07:09', '663129', '$2y$12$lovkfUBonnNy0Q9E2D7N2uz53NmyIF7arJg/l88euTjhUBtd82lii', NULL, NULL, NULL, 3, 'Ut et odio occaecat', 0, 0, NULL, 0, '2024-02-06 05:06:46', '2024-02-06 05:07:09'),
 (78, NULL, 'Samantha Conley', NULL, 'myhokub@mailinator.com', '2024-02-18 04:59:33', '340448', '$2y$12$uQmf1TTRDvnTY4avrB042OxgCblR8vdL7cbJsl4qL0IAmhnO6BbSS', NULL, NULL, NULL, 3, NULL, 0, 0, NULL, 1, '2024-02-18 04:54:24', '2024-02-18 04:59:33'),
 (79, NULL, 'Donna Warner', NULL, 'rinywehyx@mailinator.com', '2024-02-18 05:02:04', '821908', '$2y$12$NAif9J9Jx0jFetVKkfYuYOgL4fu7wtDwlYxW82Jxv2wTcGXpAPm0a', NULL, NULL, NULL, 3, NULL, 0, 0, NULL, 1, '2024-02-18 05:01:34', '2024-02-18 05:02:04'),
-(80, NULL, 'Kim Kelly', NULL, 'nozeveq@mailinator.com', NULL, '707328', '$2y$12$/2uJtH5Sb7bFrJ0Fg77cG.F8NHwcT7GV6I1QSWfTnvUaY3vYv5udO', NULL, NULL, NULL, 3, NULL, 0, 0, NULL, 1, '2024-02-18 10:39:06', '2024-02-18 10:39:06');
+(80, NULL, 'Kim Kelly', NULL, 'nozeveq@mailinator.com', NULL, '707328', '$2y$12$/2uJtH5Sb7bFrJ0Fg77cG.F8NHwcT7GV6I1QSWfTnvUaY3vYv5udO', NULL, NULL, NULL, 3, NULL, 0, 0, NULL, 1, '2024-02-18 10:39:06', '2024-02-18 10:39:06'),
+(81, NULL, 'Olivia Ballard', NULL, 'lufyrejof@mailinator.com', '2024-02-20 10:27:15', '556426', '$2y$12$lQQ.Js0KbllnpcifNC0yYOGbd5jBWSRtY7McEj6MKlYi6ag8HY6zm', NULL, NULL, NULL, 3, NULL, 0, 0, NULL, 1, '2024-02-20 10:26:50', '2024-02-20 10:27:15');
 
 -- --------------------------------------------------------
 
@@ -13209,7 +13204,7 @@ ALTER TABLE `medicine_types`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`
@@ -13233,7 +13228,7 @@ ALTER TABLE `nursing_services`
 -- AUTO_INCREMENT for table `nursing_service_requests`
 --
 ALTER TABLE `nursing_service_requests`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -13281,7 +13276,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `prescriptions`
 --
 ALTER TABLE `prescriptions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -13455,7 +13450,7 @@ ALTER TABLE `upazilas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `user_addresses`

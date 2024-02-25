@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('prescriptions', function (Blueprint $table) {
             $table->id();
+            $table->string('serial_no')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('patient_name')->nullable();
             $table->string('patient_phone')->nullable();
             $table->string('address')->nullable();
