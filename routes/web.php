@@ -30,6 +30,7 @@ use App\Http\Controllers\UserRoleController;
 use App\Http\Controllers\DeliveryChargeController;
 use App\Http\Controllers\CustomPageController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\DoctorController;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Middleware\CheckUserType;
 
@@ -419,6 +420,15 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('complete/medicine/request/{id}', [ServiceController::class, 'completeMedicineRequest'])->name('CompleteMedicineRequest');
     Route::get('deliver/medicine/request/{id}', [ServiceController::class, 'deliverMedicineRequest'])->name('DeliverMedicineRequest');
     Route::get('get/medicine/request/items/{id}', [ServiceController::class, 'getMedicineRequestItems'])->name('GetMedicineRequestItems');
+
+
+    // doctor service
+    Route::get('add/new/doctor', [DoctorController::class, 'addNewDoctor'])->name('AddNewDoctor');
+    Route::post('save/doctor', [DoctorController::class, 'saveNewDoctor'])->name('SaveNewDoctor');
+    Route::get('view/all/doctors', [DoctorController::class, 'viewAllDoctors'])->name('ViewAllDoctors');
+    Route::get('delete/doctor/{slug}', [DoctorController::class, 'deleteDoctor'])->name('DeleteDoctor');
+    Route::get('edit/doctor/{slug}', [DoctorController::class, 'editDoctor'])->name('EditDoctor');
+    Route::post('update/doctor', [DoctorController::class, 'updateDoctor'])->name('UpdateDoctor');
 
 
     // generate report

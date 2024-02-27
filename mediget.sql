@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2024 at 10:25 AM
+-- Generation Time: Feb 27, 2024 at 11:07 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -860,6 +860,39 @@ INSERT INTO `divisions` (`id`, `name`, `bn_name`, `url`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `doctors`
+--
+
+CREATE TABLE `doctors` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `visiting_charge` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `degree` varchar(255) DEFAULT NULL,
+  `institution` varchar(255) DEFAULT NULL,
+  `available_time` varchar(255) DEFAULT NULL,
+  `contact` varchar(255) DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `biography` longtext DEFAULT NULL,
+  `education` longtext DEFAULT NULL,
+  `slug` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=>Inactive; 1=>Active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `doctors`
+--
+
+INSERT INTO `doctors` (`id`, `image`, `visiting_charge`, `name`, `degree`, `institution`, `available_time`, `contact`, `location`, `biography`, `education`, `slug`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'doctors_image/Rj8Ri1709026282.jpg', '500 BDT', 'Abbot Vinson', 'Voluptatem esse est', 'Velit blanditiis eli', 'Quod at delectus la', 'Amet mollit beatae', 'Commodi rem aspernat', 'Sapiente corporis ea', 'Hic tempor aut anim ,sadasdsdf', '6jT651709026282', 1, '2024-02-27 09:31:22', NULL),
+(2, 'doctors_image/P4SvZ1709026865.webp', 'Sed et ut sint lorem', 'Tana Ayers', 'Et fugiat in vel occ', 'Est molestias itaqu', 'Debitis dolorum et a', 'Non omnis doloremque', 'Duis do nemo animi', 'Libero quaerat facil', 'Assumenda consequatu', 'hS97R1709026865', 1, '2024-02-27 09:41:05', NULL),
+(3, 'doctors_image/CtDst1709026870.png', 'Nobis fugiat volupt', 'Madeline Reed', 'Incidunt qui molest', 'Cillum quia in enim', 'Sunt dolor aliquam', 'Nesciunt autem perf', 'Dolore suscipit qui', 'Laudantium sint nul', 'Et maiores eum qui s,ugujuttt', 'BFlVW1709026870', 1, '2024-02-27 09:41:10', '2024-02-27 10:01:15');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `email_configures`
 --
 
@@ -1128,7 +1161,8 @@ CREATE TABLE `medicine_requests` (
 
 INSERT INTO `medicine_requests` (`id`, `serial_no`, `user_id`, `name`, `phone`, `address`, `slug`, `status`, `created_at`, `updated_at`) VALUES
 (1, '1Mediget00004', 64, 'Richard Ortiz', '+1 (295) 219-8345', 'Proident reprehende', '98O7E1708849775', 0, '2024-02-25 08:29:35', NULL),
-(2, '2Mediget00004', 64, 'Imogene Sharp', '+1 (383) 421-7798', 'Qui dolorem enim eaq', 's02Fc1708850403', 3, '2024-02-25 08:40:03', '2024-02-25 09:06:51');
+(4, '4Mediget00004', 64, 'Adele Stone', '+1 (533) 835-7953', 'Harum veritatis nemo', 'L70eJ1709013375', 0, '2024-02-27 05:56:15', NULL),
+(5, '5Mediget00004', 64, 'Georgia Barrera', '+1 (468) 517-3229', 'Iure lorem lorem rer', '8CxCo1709013456', 0, '2024-02-27 05:57:36', NULL);
 
 -- --------------------------------------------------------
 
@@ -1154,8 +1188,9 @@ INSERT INTO `medicine_request_items` (`id`, `medicine_request_id`, `meicine_name
 (1, 1, 'Lionel Carrillo 50MG', 1, 'zNQLV1708849775', '2024-02-25 08:29:35', NULL),
 (2, 1, 'Lionel Carrillo 100MG', 2, 'jkzl51708849775', '2024-02-25 08:29:35', NULL),
 (3, 1, 'Lionel Carrillo 200MG', 3, 'SPeol1708849775', '2024-02-25 08:29:35', NULL),
-(4, 2, 'Celeste Mcclain 20mg', 10, 'ahNrN1708850403', '2024-02-25 08:40:03', NULL),
-(5, 2, 'Celeste Mcclain 100mg', 20, 'Rz6T01708850403', '2024-02-25 08:40:03', NULL);
+(8, 4, 'Dominic Mann', 100, 'CgzpY1709013375', '2024-02-27 05:56:15', NULL),
+(9, 4, 'Dominic Mann 20 mg', 150, 'XJDVO1709013375', '2024-02-27 05:56:15', NULL),
+(10, 5, 'Slade Glenn 200 mg', 50, 'V0I1x1709013456', '2024-02-27 05:57:36', NULL);
 
 -- --------------------------------------------------------
 
@@ -1268,7 +1303,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (107, '2024_02_20_104759_create_nursing_service_requests_table', 56),
 (109, '2024_02_20_142642_create_prescriptions_table', 57),
 (110, '2024_02_25_125636_create_medicine_requests_table', 58),
-(111, '2024_02_25_130225_create_medicine_request_items_table', 59);
+(111, '2024_02_25_130225_create_medicine_request_items_table', 59),
+(114, '2024_02_27_120609_create_doctors_table', 60);
 
 -- --------------------------------------------------------
 
@@ -6957,9 +6993,8 @@ INSERT INTO `services` (`id`, `image`, `banner`, `title`, `description`, `button
 (3, 'service/3o3Zc1708346074.png', NULL, 'Ambulance Service', 'Coming Soon', NULL, '', 1, 1, NULL, '2024-02-25 06:03:15'),
 (4, 'service/qcVra1708346124.png', NULL, 'Pharmacist Service', 'Coming Soon', NULL, '', 1, 1, NULL, '2024-02-19 12:35:24'),
 (5, 'service/BUjbX1708346277.png', NULL, 'Diagonistic Service', 'Coming Soon', NULL, '', 1, 1, NULL, '2024-02-19 12:37:57'),
-(6, 'service/fQyvm1708343669.png', 'service/kNxaJ1708343867.png', 'Upload your prescription', NULL, 'Upload Prescription', '', 1, 1, NULL, '2024-02-20 07:03:17'),
-(7, 'service/wTPqF1708343922.png', 'service/ejGld1708343945.png', 'Get Doctor Appoinment', NULL, 'Get Your Appointment', '', 1, 1, NULL, '2024-02-19 12:01:52'),
-(8, 'service/8vtMN1708344139.png', 'service/f0Q5o1708344088.jpg', 'Looking for medicine from abroad?', NULL, NULL, '', 1, 1, NULL, '2024-02-25 05:59:04');
+(6, 'service/fQyvm1708343669.png', 'service/kNxaJ1708343867.png', 'Upload your prescription', NULL, 'Upload Prescription', '', 1, 1, NULL, '2024-02-27 10:04:34'),
+(8, 'service/8vtMN1708344139.png', 'service/f0Q5o1708344088.jpg', 'Looking for medicine from abroad?', NULL, 'Request for Medicine', '', 1, 1, NULL, '2024-02-25 09:33:33');
 
 -- --------------------------------------------------------
 
@@ -12750,6 +12785,12 @@ ALTER TABLE `divisions`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `doctors`
+--
+ALTER TABLE `doctors`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `email_configures`
 --
 ALTER TABLE `email_configures`
@@ -13224,6 +13265,12 @@ ALTER TABLE `divisions`
   MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `doctors`
+--
+ALTER TABLE `doctors`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `email_configures`
 --
 ALTER TABLE `email_configures`
@@ -13275,13 +13322,13 @@ ALTER TABLE `medicine_generics`
 -- AUTO_INCREMENT for table `medicine_requests`
 --
 ALTER TABLE `medicine_requests`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `medicine_request_items`
 --
 ALTER TABLE `medicine_request_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `medicine_types`
@@ -13293,7 +13340,7 @@ ALTER TABLE `medicine_types`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`

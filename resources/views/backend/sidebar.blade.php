@@ -17,7 +17,7 @@
     <li class="menu-title" style="color: khaki; text-shadow: 1px 1px 2px black;">Service Modules</li>
     <li><a href="{{ url('/service/config') }}"><i class="feather-settings"></i><span>Service Config</span></a></li>
     <li>
-        <a href="javascript: void(0);" class="has-arrow"><i class="mdi mdi-doctor"></i><span>Nursing Service</span></a>
+        <a href="javascript: void(0);" class="has-arrow"><i class="fas fa-user-nurse"></i><span>Nursing Service</span></a>
         <ul class="sub-menu" aria-expanded="false">
             <li><a href="{{ url('/nursing/service/types') }}">Service Types</a></li>
             <li><a href="{{ url('/nursing/service/requests') }}">Service Requests</a></li>
@@ -25,6 +25,14 @@
     </li>
     <li><a href="{{ url('/view/uploaded/prescriptions') }}"><i class="feather-file-text"></i><span>Uploaded Prescriptions</span></a></li>
     <li><a href="{{ url('/view/medicine/requests') }}"><i class="dripicons-medical"></i><span>Medicine Requests</span></a></li>
+    <li>
+        <a href="javascript: void(0);" class="has-arrow"><i class="fas fa-user-md"></i><span>Doctor Service</span></a>
+        <ul class="sub-menu" aria-expanded="false">
+            <li><a href="{{ url('/add/new/doctor') }}">Add Doctor</a></li>
+            <li><a href="{{ url('/view/all/doctors') }}">View All Doctors</a></li>
+            <li><a href="{{ url('/doctor/visit/requests') }}">Visit Requests</a></li>
+        </ul>
+    </li>
 
 
     <hr style="border-color: #c8c8c836; margin-top: 12px; margin-bottom: 12px;">
