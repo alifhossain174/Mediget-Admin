@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2024 at 11:07 AM
+-- Generation Time: Feb 27, 2024 at 11:53 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -886,9 +886,29 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`id`, `image`, `visiting_charge`, `name`, `degree`, `institution`, `available_time`, `contact`, `location`, `biography`, `education`, `slug`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'doctors_image/Rj8Ri1709026282.jpg', '500 BDT', 'Abbot Vinson', 'Voluptatem esse est', 'Velit blanditiis eli', 'Quod at delectus la', 'Amet mollit beatae', 'Commodi rem aspernat', 'Sapiente corporis ea', 'Hic tempor aut anim ,sadasdsdf', '6jT651709026282', 1, '2024-02-27 09:31:22', NULL),
-(2, 'doctors_image/P4SvZ1709026865.webp', 'Sed et ut sint lorem', 'Tana Ayers', 'Et fugiat in vel occ', 'Est molestias itaqu', 'Debitis dolorum et a', 'Non omnis doloremque', 'Duis do nemo animi', 'Libero quaerat facil', 'Assumenda consequatu', 'hS97R1709026865', 1, '2024-02-27 09:41:05', NULL),
-(3, 'doctors_image/CtDst1709026870.png', 'Nobis fugiat volupt', 'Madeline Reed', 'Incidunt qui molest', 'Cillum quia in enim', 'Sunt dolor aliquam', 'Nesciunt autem perf', 'Dolore suscipit qui', 'Laudantium sint nul', 'Et maiores eum qui s,ugujuttt', 'BFlVW1709026870', 1, '2024-02-27 09:41:10', '2024-02-27 10:01:15');
+(1, 'doctors_image/Rj8Ri1709026282.jpg', '500', 'Dr. Khalid Abbed', 'MBBS, BCS(Helth)', 'Square Hospital (Professor Neuromedicine)', 'Wednesday to Friday 03:03 PM - 04:04 PM', '+8801969005035', 'Commodi rem aspernat', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Risus commodo viverra maecenas accumsan lacus vel facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.', 'Master of Neoro Surgery at University of Mediserv (2002),Higher Secondary Certificate at Mediserv collage (1991)', '6jT651709026282', 1, '2024-02-27 09:31:22', '2024-02-27 10:33:32'),
+(2, 'doctors_image/P4SvZ1709026865.webp', '750', 'Dr. Jihadul Islam', 'MBBS, FCPS', 'Specialized Medical Hospital', 'Monday to Friday 03:03 PM - 04:04 PM', '+8801969005999', 'Duis do nemo animi', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Risus commodo viverra maecenas accumsan lacus vel facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.', 'MBBS degree in Neurosciences at University of Mediserv (2002),Higher Secondary Certificate at Mediserv collage (1991)', 'hS97R1709026865', 1, '2024-02-27 09:41:05', '2024-02-27 10:33:14'),
+(3, 'doctors_image/CtDst1709026870.png', '1200', 'Dr. Sagor Khan', 'MBBS, BCS(Nurology)', 'Alfa Hospital', 'Sunday to Friday 03:03 PM - 04:04 PM', '+8801969008596', 'Dolore suscipit qui', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Risus commodo viverra maecenas accumsan lacus vel facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.', 'PHD degree in Neorology at University of Mediserv (2006),Master of Neoro Surgery at University of Mediserv (2002)', 'BFlVW1709026870', 1, '2024-02-27 09:41:10', '2024-02-27 10:32:47');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doctor_visit_requests`
+--
+
+CREATE TABLE `doctor_visit_requests` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `doctor_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `age` varchar(255) DEFAULT NULL,
+  `weight` varchar(255) DEFAULT NULL,
+  `visit_date_time` varchar(255) DEFAULT NULL,
+  `slug` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=>Pending; 1=>Approved; 2=>Cancelled',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1304,7 +1324,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (109, '2024_02_20_142642_create_prescriptions_table', 57),
 (110, '2024_02_25_125636_create_medicine_requests_table', 58),
 (111, '2024_02_25_130225_create_medicine_request_items_table', 59),
-(114, '2024_02_27_120609_create_doctors_table', 60);
+(114, '2024_02_27_120609_create_doctors_table', 60),
+(116, '2024_02_27_164811_create_doctor_visit_requests_table', 61);
 
 -- --------------------------------------------------------
 
@@ -12791,6 +12812,12 @@ ALTER TABLE `doctors`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `doctor_visit_requests`
+--
+ALTER TABLE `doctor_visit_requests`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `email_configures`
 --
 ALTER TABLE `email_configures`
@@ -13271,6 +13298,12 @@ ALTER TABLE `doctors`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `doctor_visit_requests`
+--
+ALTER TABLE `doctor_visit_requests`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `email_configures`
 --
 ALTER TABLE `email_configures`
@@ -13340,7 +13373,7 @@ ALTER TABLE `medicine_types`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`
