@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2024 at 11:53 AM
+-- Generation Time: Feb 27, 2024 at 12:35 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -899,6 +899,7 @@ INSERT INTO `doctors` (`id`, `image`, `visiting_charge`, `name`, `degree`, `inst
 CREATE TABLE `doctor_visit_requests` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `doctor_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `age` varchar(255) DEFAULT NULL,
@@ -1325,7 +1326,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (110, '2024_02_25_125636_create_medicine_requests_table', 58),
 (111, '2024_02_25_130225_create_medicine_request_items_table', 59),
 (114, '2024_02_27_120609_create_doctors_table', 60),
-(116, '2024_02_27_164811_create_doctor_visit_requests_table', 61);
+(117, '2024_02_27_164811_create_doctor_visit_requests_table', 61);
 
 -- --------------------------------------------------------
 
@@ -13373,7 +13374,7 @@ ALTER TABLE `medicine_types`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`

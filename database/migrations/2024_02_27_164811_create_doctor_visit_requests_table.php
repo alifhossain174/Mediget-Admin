@@ -17,6 +17,7 @@ return new class extends Migration
         Schema::create('doctor_visit_requests', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('doctor_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('name')->nullable();
             $table->string('phone')->nullable();
             $table->string('age')->nullable();
