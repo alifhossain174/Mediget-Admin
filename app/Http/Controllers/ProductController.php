@@ -92,8 +92,8 @@ class ProductController extends Controller
         $product->brand_id = $request->brand_id;
         $product->code = $request->code;
         $product->points = $request->points;
-        $product->is_otc = $request->is_otc;
-        $product->is_antibiotic = $request->is_antibiotic;
+        $product->is_otc = $request->is_otc ? 1 : 0;
+        $product->is_antibiotic = $request->is_antibiotic ? 1 : 0;
         $product->meta_title = $request->meta_title;
         $product->meta_keywords = $request->meta_keywords;
         $product->meta_description = $request->meta_description;
@@ -386,8 +386,8 @@ class ProductController extends Controller
         // $product->slug = $slug."-".time().str::random(5);
         $product->flag_id = $request->flag_id;
 
-        $product->is_otc = $request->is_otc;
-        $product->is_antibiotic = $request->is_antibiotic;
+        $product->is_otc = $request->is_otc ? 1 : 0;
+        $product->is_antibiotic = $request->is_antibiotic ? 1 : 0;
 
         $product->meta_title = $request->meta_title;
         $product->meta_keywords = $request->meta_keywords;
