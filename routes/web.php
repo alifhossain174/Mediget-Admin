@@ -429,6 +429,10 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('delete/doctor/{slug}', [DoctorController::class, 'deleteDoctor'])->name('DeleteDoctor');
     Route::get('edit/doctor/{slug}', [DoctorController::class, 'editDoctor'])->name('EditDoctor');
     Route::post('update/doctor', [DoctorController::class, 'updateDoctor'])->name('UpdateDoctor');
+    Route::get('doctor/visit/requests', [DoctorController::class, 'doctorAppointments'])->name('DoctorAppointments');
+    Route::get('delete/doctor/appointment/{id}', [DoctorController::class, 'deleteDoctorAppointment'])->name('DeleteDoctorAppointment');
+    Route::get('approve/doctor/appointment/{id}', [DoctorController::class, 'approveDoctorAppointment'])->name('ApproveDoctorAppointment');
+    Route::get('cancel/doctor/appointment/{id}', [DoctorController::class, 'cancelDoctorAppointment'])->name('CancelDoctorAppointment');
 
 
     // generate report

@@ -19,10 +19,10 @@
 @endsection
 
 @section('page_title')
-    Nursing Service
+    Doctor Appointments
 @endsection
 @section('page_heading')
-    View All Nursing Service Requests
+    View All Doctor Appointments
 @endsection
 
 @section('content')
@@ -30,19 +30,18 @@
         <div class="col-lg-12 col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-3">Nursing Service Requests</h4>
+                    <h4 class="card-title mb-3">Doctor Appointments</h4>
                     <div class="table-responsive">
 
                         <table class="table table-bordered mb-0 data-table">
                             <thead>
                                 <tr>
                                     <th class="text-center">SL</th>
-                                    <th class="text-center">Service</th>
-                                    <th class="text-center">Price</th>
-                                    <th class="text-center">Date & Time</th>
-                                    <th class="text-center">Patient Name</th>
-                                    <th class="text-center">Phone No</th>
-                                    <th class="text-center">Remarks</th>
+                                    <th class="text-center">Doctor Info</th>
+                                    <th class="text-center">Fees</th>
+                                    <th class="text-center">Patient Info</th>
+                                    <th class="text-center">Appointment Datetime</th>
+                                    <th class="text-center">Requested At</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -73,24 +72,26 @@
             serverSide: true,
             pageLength: 15,
             lengthMenu: [15, 25, 50, 100],
-            ajax: "{{ url('nursing/service/requests') }}",
+            ajax: "{{ url('doctor/visit/requests') }}",
             columns: [
                 {
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex'
-                }, //orderable: true, searchable: true
-                {
-                    data: 'service_name',
-                    name: 'service_name'
                 },
                 {
-                    data: 'service_price',
-                    name: 'service_price'
+                    data: 'doctor_id',
+                    name: 'doctor_id'
                 },
-                {data: 'service_date_time', name: 'service_date_time'},
-                {data: 'patient_name', name: 'patient_name'},
-                {data: 'patient_phone', name: 'patient_phone'},
-                {data: 'remarks', name: 'remarks'},
+                {
+                    data: 'visiting_charge',
+                    name: 'visiting_charge'
+                },
+                {
+                    data: 'name',
+                    name: 'name'
+                },
+                {data: 'visit_date_time', name: 'visit_date_time'},
+                {data: 'created_at', name: 'created_at'},
                 {data: 'status', name: 'status'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
@@ -111,27 +112,10 @@
             if(confirm("Are You sure want to delete !")){
                 $.ajax({
                     type: "GET",
-                    url: "{{ url('delete/nursing/service/request') }}"+'/'+id,
+                    url: "{{ url('delete/doctor/appointment') }}"+'/'+id,
                     success: function (data) {
                         table.draw(false);
                         toastr.error("Request has been Deleted", "Deleted Successfully");
-                    },
-                    error: function (data) {
-                        console.log('Error:', data);
-                    }
-                });
-            }
-        });
-
-        $('body').on('click', '.inProgress', function () {
-            var id = $(this).data("id");
-            if(confirm("Are You sure ?")){
-                $.ajax({
-                    type: "GET",
-                    url: "{{ url('approve/nursing/service/request') }}"+'/'+id,
-                    success: function (data) {
-                        table.draw(false);
-                        toastr.success("Request has been Approved", "Approved Successfully");
                     },
                     error: function (data) {
                         console.log('Error:', data);
@@ -145,7 +129,7 @@
             if(confirm("Are You sure ?")){
                 $.ajax({
                     type: "GET",
-                    url: "{{ url('cancel/nursing/service/request') }}"+'/'+id,
+                    url: "{{ url('cancel/doctor/appointment') }}"+'/'+id,
                     success: function (data) {
                         table.draw(false);
                         toastr.error("Request has been Cancelled", "Cancelled Successfully");
@@ -162,10 +146,10 @@
             if(confirm("Are You sure ?")){
                 $.ajax({
                     type: "GET",
-                    url: "{{ url('complete/nursing/service/request') }}"+'/'+id,
+                    url: "{{ url('approve/doctor/appointment') }}"+'/'+id,
                     success: function (data) {
                         table.draw(false);
-                        toastr.success("Request is Complete", "Completed Successfully");
+                        toastr.success("Request is Approved", "Approve Successfully");
                     },
                     error: function (data) {
                         console.log('Error:', data);
