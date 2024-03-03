@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('doctor_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('serial_no')->nullable();
             $table->string('name')->nullable();
             $table->string('phone')->nullable();
             $table->string('age')->nullable();
