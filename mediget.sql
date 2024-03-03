@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2024 at 12:35 PM
+-- Generation Time: Mar 03, 2024 at 05:24 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -910,6 +910,14 @@ CREATE TABLE `doctor_visit_requests` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `doctor_visit_requests`
+--
+
+INSERT INTO `doctor_visit_requests` (`id`, `doctor_id`, `user_id`, `name`, `phone`, `age`, `weight`, `visit_date_time`, `slug`, `status`, `created_at`, `updated_at`) VALUES
+(2, 3, 64, 'Richard Soto', '+1 (761) 397-9339', 'Tenetur magnam aut a', 'Quis facilis fugiat', NULL, 'HIQ8P1709035834', 0, '2024-02-27 12:10:34', NULL),
+(3, 1, 64, 'Madaline Sawyer', '+1 (901) 266-5897', '28 years', '82 KG', NULL, 'E2IoA1709189325', 0, '2024-02-29 06:48:45', NULL);
 
 -- --------------------------------------------------------
 
@@ -13302,7 +13310,7 @@ ALTER TABLE `doctors`
 -- AUTO_INCREMENT for table `doctor_visit_requests`
 --
 ALTER TABLE `doctor_visit_requests`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `email_configures`
