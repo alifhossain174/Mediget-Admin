@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2024 at 03:55 PM
+-- Generation Time: Mar 03, 2024 at 08:08 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -912,6 +912,14 @@ CREATE TABLE `doctor_visit_requests` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `doctor_visit_requests`
+--
+
+INSERT INTO `doctor_visit_requests` (`id`, `doctor_id`, `user_id`, `serial_no`, `name`, `phone`, `age`, `weight`, `visit_date_time`, `slug`, `status`, `created_at`, `updated_at`) VALUES
+(2, 1, 64, '2Mediget00003', 'Noelle Hubbard', '+1 (643) 774-8966', '28 years', '81 KG', '24-03-03 21:08', 'GS2Xr1709478028', 2, '2024-03-03 18:17:35', NULL),
+(3, 2, 64, '3Mediget00004', 'Slade Baker', '+1 (518) 633-1493', '30 years', '68 KG', '24-03-04 21:08', 'z1xxj1709478037', 1, '2024-03-03 18:15:47', '2024-03-03 15:42:51');
+
 -- --------------------------------------------------------
 
 --
@@ -1111,7 +1119,7 @@ CREATE TABLE `general_infos` (
 --
 
 INSERT INTO `general_infos` (`id`, `logo`, `logo_dark`, `fav_icon`, `tab_title`, `company_name`, `short_description`, `contact`, `email`, `address`, `google_map_link`, `play_store_link`, `app_store_link`, `tin`, `trade_license`, `footer_copyright_text`, `payment_banner`, `primary_color`, `secondary_color`, `tertiary_color`, `title_color`, `paragraph_color`, `border_color`, `meta_title`, `meta_keywords`, `meta_description`, `meta_og_title`, `meta_og_image`, `meta_og_description`, `custom_css`, `custom_js`, `header_script`, `footer_script`, `facebook`, `instagram`, `twitter`, `linkedin`, `youtube`, `messenger`, `whatsapp`, `telegram`, `tiktok`, `pinterest`, `viber`, `google_analytic_status`, `google_analytic_tracking_id`, `google_tag_manager_status`, `google_tag_manager_id`, `fb_pixel_status`, `fb_pixel_app_id`, `messenger_chat_status`, `fb_page_id`, `tawk_chat_status`, `tawk_chat_link`, `crisp_chat_status`, `crisp_website_id`, `about_us`, `created_at`, `updated_at`) VALUES
-(1, 'company_logo/SQe5Y1707216770.svg', 'company_logo/yHC3A1707216775.svg', 'company_logo/j9WMx1707216775.png', 'TechShop - Ecommerce', 'epharma24.com', 'Pharmacy ecommerce refers to the online retailing of pharmaceutical products and healthcare items. It allows customers to conveniently purchase prescription medications, over-the-counter drugs, supplements and other health-related products.', '0125487996,+8801235979845', 'epharma24@gmail.com,info@epharma-24.com', 'Flat B4, House No 71, Road 27, Gulshan-1, Dhaka-1212, Bangladesh.', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7887.465355142307!2d-0.13384360843222626!3d51.4876034467734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760532743b90e1%3A0x790260718555a20c!2sU.S.%20Embassy%2C%20London!5e0!3m2!1sen!2sbd!4v1632035375945!5m2!1sen!2sbd', 'https://play.google.com/store', NULL, '987987654', 'ERWWR987320321', 'Copyright © 2024 Epharma-24. All Rights Reserved.', 'company_logo/O0Ffu1708255777.png', '#070a52', '#2d9596', '#f3f6f4', '#000000', '#00070c', '#e7e7e7', 'Epharma-24', 'ecommerce,shopping,online', 'Epharma', 'Epharma', 'company_logo/cvqJR1707217537.png', 'Fashionable Dress Man\'s Fashion', NULL, '<script>\r\n	var meDev = \"Code Sleep Eat\";\r\n	console.log(data);\r\n</script>', NULL, NULL, 'https://www.facebook.com', 'https://www.instagram.com', 'https://www.twitter.com', NULL, NULL, 'https://www.messenger.com', 'https://web.whatsapp.com', NULL, NULL, NULL, NULL, 0, 'UA-842191520-669T', 0, 'GTM-546FMKZS', 0, NULL, 0, NULL, 0, 'https://embed.tawk.to/5a7c31ed7591465c7077c48/default', 0, NULL, NULL, NULL, '2024-02-19 09:27:59');
+(1, 'company_logo/SQe5Y1707216770.svg', 'company_logo/BAsBE1709490926.svg', 'company_logo/j9WMx1707216775.png', 'TechShop - Ecommerce', 'epharma24.com', 'Pharmacy ecommerce refers to the online retailing of pharmaceutical products and healthcare items. It allows customers to conveniently purchase prescription medications, over-the-counter drugs, supplements and other health-related products.', '0125487996,+8801235979845', 'epharma24@gmail.com,info@epharma-24.com', 'Flat B4, House No 71, Road 27, Gulshan-1, Dhaka-1212, Bangladesh.', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7887.465355142307!2d-0.13384360843222626!3d51.4876034467734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760532743b90e1%3A0x790260718555a20c!2sU.S.%20Embassy%2C%20London!5e0!3m2!1sen!2sbd!4v1632035375945!5m2!1sen!2sbd', 'https://play.google.com/store', NULL, '987987654', 'ERWWR987320321', 'Copyright © 2024 Epharma-24. All Rights Reserved.', 'company_logo/O0Ffu1708255777.png', '#070a52', '#2d9596', '#f3f6f4', '#000000', '#00070c', '#e7e7e7', 'Epharma-24', 'ecommerce,shopping,online', 'Epharma', 'Epharma', 'company_logo/cvqJR1707217537.png', 'Fashionable Dress Man\'s Fashion', NULL, '<script>\r\n	var meDev = \"Code Sleep Eat\";\r\n	console.log(data);\r\n</script>', NULL, NULL, 'https://www.facebook.com', 'https://www.instagram.com', 'https://www.twitter.com', NULL, NULL, 'https://www.messenger.com', 'https://web.whatsapp.com', NULL, NULL, NULL, NULL, 0, 'UA-842191520-669T', 0, 'GTM-546FMKZS', 0, NULL, 0, NULL, 0, 'https://embed.tawk.to/5a7c31ed7591465c7077c48/default', 0, NULL, NULL, NULL, '2024-03-03 18:35:26');
 
 -- --------------------------------------------------------
 
@@ -2830,7 +2838,8 @@ INSERT INTO `products` (`id`, `generic_id`, `disease_id`, `medicine_type_id`, `c
 (2300, 1, 6, 1, 51, NULL, NULL, 48, NULL, 'Organized reciprocal artificialintelligence-297', 'Et.', '194', 'productImages/2.webp', '[\"8.webp\",\"3.webp\",\"1.webp\",\"6.webp\"]', 'Numquam et iusto quisquam eos et tempora. Molestiae nihil sapiente expedita corporis earum. Repudiandae ad quod consequuntur fugit sunt est. Dolorem eveniet possimus dolorem provident ut et.', 'Dignissimos ab aut vero quia itaque molestiae quia sit. Doloribus perferendis at iusto aliquam. Asperiores sunt quam corporis similique ad ipsam. Aut magnam aperiam eos sunt veritatis culpa. Rerum assumenda aspernatur atque. Iusto provident inventore sit placeat ut iusto. Culpa unde explicabo iure nihil.', 'Quae atque natus mollitia doloribus ut quae possimus. Vitae voluptatum voluptatum ut quod culpa minus aut. Vero cum est voluptates esse.', 'Voluptas labore non excepturi necessitatibus officiis corporis rerum. Enim quam est accusantium ex.', 609, 599, 1000, 10, 15, 0, 0, 10, 'product,demo', 'https://www.youtube.com/watch?v=2tirsYI5D2M', NULL, '1707974806VJBdS', 14, 'Organized reciprocal artificialintelligence-297', 'product,demo', NULL, 1, 0, 35, 1, '2024-02-15 05:26:46', NULL),
 (2301, 1, 6, 1, 38, NULL, NULL, 46, NULL, 'Adaptive clear-thinking opensystem-298', 'Est.', '960', 'productImages/10.webp', NULL, 'Voluptates ad dolor aut facere excepturi voluptas. Ea eos et in excepturi voluptatibus sint. Dolorum itaque voluptatum tempora quia iure est dolorum.', 'Quod debitis et corporis voluptas. Provident quas rem delectus. Recusandae facilis similique atque. Sapiente natus sed vel nihil. Rem et corporis aperiam est impedit. Qui enim id ea cumque. Soluta quos tempore tempore aut id. Laborum dolorem facilis itaque nostrum porro eum.', 'Et fugiat quas sed ut et atque deserunt. Adipisci et aut sed dolor. Beatae sit sit assumenda similique sunt fuga. Natus nesciunt ex deserunt omnis nostrum.', 'Aut saepe nihil natus molestias ipsum. Illum animi quod nobis illum. Tempora quis neque praesentium harum aspernatur reprehenderit. Libero voluptatem cumque earum sapiente.', 679, 669, 1000, 10, 15, 1, 1, 9, 'product,demo', 'https://www.youtube.com/watch?v=2tirsYI5D2M', NULL, '1707974806R1dW6', 16, 'Adaptive clear-thinking opensystem-298', 'product,demo', NULL, 1, 1, 9, 1, '2024-02-15 05:26:46', NULL),
 (2302, 1, 9, 3, 47, NULL, NULL, 46, NULL, 'Public-key regional protocol-299', 'Hic ea.', '610', 'productImages/11.webp', '[\"18.webp\",\"12.webp\",\"21.webp\",\"24.webp\"]', 'Et velit aperiam odio asperiores. Aliquam iure ipsam animi. Eaque ab consequuntur aut veritatis ex.', 'Qui dignissimos rerum quos dolorum et. Ipsam molestiae autem minima sunt consequatur. Architecto maiores veritatis hic pariatur laudantium. Maiores reprehenderit ea quasi illum nesciunt aperiam. Consequatur quam qui repellendus quos. Vel explicabo quisquam eos omnis. Quo et corrupti sint dolor aut quos. Expedita occaecati sunt omnis aut et. Eligendi ut aut fugiat facere molestiae necessitatibus.', 'Ea eaque ea et placeat saepe. Quae eius cum velit harum. Ab quia numquam reiciendis voluptatibus ratione omnis.', 'Temporibus necessitatibus quidem ut quis quia. Corporis esse quaerat qui vel velit quia id laboriosam. Et minima alias ducimus quos. Consequatur impedit nobis eius earum soluta aut quam.', 617, 607, 1000, 10, 15, 0, 0, 9, 'product,demo', 'https://www.youtube.com/watch?v=2tirsYI5D2M', NULL, '17079748066Nxqj', 14, 'Public-key regional protocol-299', 'product,demo', NULL, 1, 0, 6, 1, '2024-02-15 05:26:46', NULL),
-(2303, 1, 10, 3, 38, NULL, NULL, 44, NULL, 'Fully-configurable eco-centric policy-300', 'Facere.', '122', 'productImages/10.webp', NULL, 'Nulla accusantium distinctio enim ut eius omnis quia. Quo autem et velit fugit dolorem ut enim. Dolores repellat eos numquam est non architecto et eum.', 'Accusantium dolor expedita quam. Incidunt quas porro quisquam. Laudantium assumenda assumenda ut veniam ex illo. Incidunt autem facilis qui. Facere ipsam qui et magnam. Dolorum quisquam repellat quidem ut. Culpa rerum est suscipit aut.', 'Eum expedita et illo illum asperiores eveniet. Voluptatibus maiores doloremque voluptates voluptas labore ea. Consequatur explicabo voluptates veritatis.', 'Quisquam dolorem totam porro quia beatae. Ab in esse unde sit aspernatur et qui. Rerum quam optio adipisci nisi rem.', 522, 512, 1000, 10, 15, 1, 1, 11, 'product,demo', 'https://www.youtube.com/watch?v=2tirsYI5D2M', NULL, '1707974806U8BCo', 14, 'Fully-configurable eco-centric policy-300', 'product,demo', NULL, 1, 1, 42, 1, '2024-02-15 05:26:46', NULL);
+(2303, 1, 10, 3, 38, NULL, NULL, 44, NULL, 'Fully-configurable eco-centric policy-300', 'Facere.', '122', 'productImages/10.webp', NULL, 'Nulla accusantium distinctio enim ut eius omnis quia. Quo autem et velit fugit dolorem ut enim. Dolores repellat eos numquam est non architecto et eum.', 'Accusantium dolor expedita quam. Incidunt quas porro quisquam. Laudantium assumenda assumenda ut veniam ex illo. Incidunt autem facilis qui. Facere ipsam qui et magnam. Dolorum quisquam repellat quidem ut. Culpa rerum est suscipit aut.', 'Eum expedita et illo illum asperiores eveniet. Voluptatibus maiores doloremque voluptates voluptas labore ea. Consequatur explicabo voluptates veritatis.', 'Quisquam dolorem totam porro quia beatae. Ab in esse unde sit aspernatur et qui. Rerum quam optio adipisci nisi rem.', 522, 512, 1000, 10, 15, 1, 1, 11, 'product,demo', 'https://www.youtube.com/watch?v=2tirsYI5D2M', NULL, '1707974806U8BCo', 14, 'Fully-configurable eco-centric policy-300', 'product,demo', NULL, 1, 1, 42, 1, '2024-02-15 05:26:46', NULL),
+(2304, 1, 10, 2, 47, NULL, NULL, 44, NULL, 'Elmo Evans', 'Error nemo tempor si', 'Corporis quisquam te', 'productImages/tBquE1709490606.png', '[\"1709490607D3VWy.jpg\",\"1709490607vrC3a.jpg\"]', 'Laboris ut officia q', NULL, NULL, NULL, 15, 295, 0, 0, 0, 0, 0, 10, 'Labore dolor suscipi', NULL, NULL, 'elmo-evans-1709490607a1xsv', 16, 'Quis odio recusandae', 'Dolore dolores repud', 'Officiis porro deser', 1, 0, 0, 0, '2024-03-03 18:30:07', '2024-03-03 18:30:07');
 
 -- --------------------------------------------------------
 
@@ -4189,7 +4198,9 @@ INSERT INTO `product_images` (`id`, `product_id`, `image`, `created_at`, `update
 (4652, 2302, '18.webp', '2024-02-15 05:26:46', NULL),
 (4653, 2302, '12.webp', '2024-02-15 05:26:46', NULL),
 (4654, 2302, '21.webp', '2024-02-15 05:26:46', NULL),
-(4655, 2302, '24.webp', '2024-02-15 05:26:46', NULL);
+(4655, 2302, '24.webp', '2024-02-15 05:26:46', NULL),
+(4656, 2304, '1709490607D3VWy.jpg', '2024-03-03 18:30:07', NULL),
+(4657, 2304, '1709490607vrC3a.jpg', '2024-03-03 18:30:07', NULL);
 
 -- --------------------------------------------------------
 
@@ -7011,7 +7022,7 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `image`, `banner`, `title`, `description`, `button_text`, `slug`, `status`, `serial`, `created_at`, `updated_at`) VALUES
-(1, 'service/5zxCh1708346362.png', NULL, 'Nursing Service', 'We Provide Best Service', NULL, '', 1, 1, NULL, '2024-02-19 12:39:22'),
+(1, 'service/5zxCh1708346362.png', 'service/Iqo5v1709491293.jpg', 'Nursing Service', 'We Provide Best Service', NULL, '', 1, 1, NULL, '2024-03-03 18:41:33'),
 (2, 'service/SuHYk1708345861.png', NULL, 'Doctor Appointment', 'We Provide Best Service', NULL, '', 1, 1, NULL, '2024-02-20 03:48:25'),
 (3, 'service/3o3Zc1708346074.png', NULL, 'Ambulance Service', 'Coming Soon', NULL, '', 1, 1, NULL, '2024-02-25 06:03:15'),
 (4, 'service/qcVra1708346124.png', NULL, 'Pharmacist Service', 'Coming Soon', NULL, '', 1, 1, NULL, '2024-02-19 12:35:24'),
@@ -13303,7 +13314,7 @@ ALTER TABLE `doctors`
 -- AUTO_INCREMENT for table `doctor_visit_requests`
 --
 ALTER TABLE `doctor_visit_requests`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `email_configures`
@@ -13453,13 +13464,13 @@ ALTER TABLE `prescriptions`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2304;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2305;
 
 --
 -- AUTO_INCREMENT for table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4656;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4658;
 
 --
 -- AUTO_INCREMENT for table `product_models`
