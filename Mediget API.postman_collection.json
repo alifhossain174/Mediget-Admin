@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "5dca8c1d-8a86-4522-af3a-be02b3f6d59d",
+		"_postman_id": "3ea626c7-f34f-4995-a469-c1af8e82013d",
 		"name": "Mediget API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "29297545",
-		"_collection_link": "https://getup-ltd-199802.postman.co/workspace/Team-Workspace~4d447c04-a1da-42b0-8049-d2406141e7b5/collection/29297545-5dca8c1d-8a86-4522-af3a-be02b3f6d59d?action=share&source=collection_link&creator=29297545"
+		"_exporter_id": "9320515"
 	},
 	"item": [
 		{
@@ -44,12 +43,12 @@
 					]
 				},
 				"url": {
-					"raw": "https://imaginex-admin.getcommerce.xyz/api/user/registration",
+					"raw": "https://app-area.epharma24.com/api/user/registration",
 					"protocol": "https",
 					"host": [
-						"imaginex-admin",
-						"getcommerce",
-						"xyz"
+						"app-area",
+						"epharma24",
+						"com"
 					],
 					"path": [
 						"api",
@@ -92,7 +91,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/user/verification",
+					"raw": "http://127.0.0.1:8000/api/user/verification",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -137,7 +136,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/user/login",
+					"raw": "https://app-area.riointernational.com.bd/api/user/login",
 					"protocol": "https",
 					"host": [
 						"app-area",
@@ -181,7 +180,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/social/login",
+					"raw": "http://127.0.0.1:8000/api/social/login",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -211,7 +210,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/social/login/credentials",
+					"raw": "http://127.0.0.1:8000/api/social/login/credentials",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -256,9 +255,8 @@
 					"protocol": "https",
 					"host": [
 						"app-area",
-						"imaginex",
-						"com",
-						"bd"
+						"epharma24",
+						"com"
 					],
 					"path": [
 						"api",
@@ -296,7 +294,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/verify/reset/code",
+					"raw": "http://127.0.0.1:8000/api/verify/reset/code",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -342,7 +340,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/change/password",
+					"raw": "http://127.0.0.1:8000/api/change/password",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -407,9 +405,8 @@
 					"protocol": "https",
 					"host": [
 						"app-area",
-						"imaginex",
-						"com",
-						"bd"
+						"epharma24",
+						"com"
 					],
 					"path": [
 						"api",
@@ -606,7 +603,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/user/profile/update/web",
+					"raw": "https://app-area.fejmo.com/api/user/profile/update/web",
 					"protocol": "https",
 					"host": [
 						"app-area",
@@ -1120,7 +1117,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/get/all/address",
+					"raw": "https://app-area.bestu.com.bd/api/get/all/address",
 					"protocol": "https",
 					"host": [
 						"app-area",
@@ -1206,7 +1203,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/add/new/address",
+					"raw": "https://app-area.bestu.com.bd/api/add/new/address",
 					"protocol": "https",
 					"host": [
 						"app-area",
@@ -1297,7 +1294,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/update/my/address",
+					"raw": "https://app-area.bestu.com.bd/api/update/my/address",
 					"protocol": "https",
 					"host": [
 						"app-area",
@@ -1384,7 +1381,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/delete/my/address",
+					"raw": "https://app-area.bestu.com.bd/api/delete/my/address",
 					"protocol": "https",
 					"host": [
 						"app-area",
@@ -1517,9 +1514,8 @@
 					"protocol": "https",
 					"host": [
 						"app-area",
-						"imaginex",
-						"com",
-						"bd"
+						"epharma24",
+						"com"
 					],
 					"path": [
 						"api",
@@ -1552,7 +1548,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/get/product/list",
+					"raw": "https://app-area.fejmo.com/api/get/product/list",
 					"protocol": "https",
 					"host": [
 						"app-area",
@@ -1591,7 +1587,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/get/related/products",
+					"raw": "http://127.0.0.1:8000/api/get/related/products",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -1817,9 +1813,8 @@
 					"protocol": "https",
 					"host": [
 						"app-area",
-						"imaginex",
-						"com",
-						"bd"
+						"epharma24",
+						"com"
 					],
 					"path": [
 						"api",
@@ -1906,7 +1901,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/product/details/ladies-blazer-set-1701408751TssPg",
+					"raw": "https://app-area.fejmo.com/api/product/details/ladies-blazer-set-1701408751TssPg",
 					"protocol": "https",
 					"host": [
 						"app-area",
@@ -1939,9 +1934,8 @@
 					"protocol": "https",
 					"host": [
 						"app-area",
-						"imaginex",
-						"com",
-						"bd"
+						"epharma24",
+						"com"
 					],
 					"path": [
 						"api",
@@ -1969,7 +1963,36 @@
 					"protocol": "https",
 					"host": [
 						"app-area",
-						"imaginex",
+						"epharma24",
+						"com"
+					],
+					"path": [
+						"api",
+						"get",
+						"all",
+						"brands"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Diseases",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Mediget-04032024",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://app-area.epharma24.com.bd/api/get/all/diseases",
+					"protocol": "https",
+					"host": [
+						"app-area",
+						"epharma24",
 						"com",
 						"bd"
 					],
@@ -1977,7 +2000,7 @@
 						"api",
 						"get",
 						"all",
-						"brands"
+						"diseases"
 					]
 				}
 			},
@@ -2054,7 +2077,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/live/search/products",
+					"raw": "http://127.0.0.1:8000/api/live/search/products",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -2137,9 +2160,8 @@
 					"protocol": "https",
 					"host": [
 						"app-area",
-						"imaginex",
-						"com",
-						"bd"
+						"epharma24",
+						"com"
 					],
 					"path": [
 						"api",
@@ -2197,9 +2219,8 @@
 					"protocol": "https",
 					"host": [
 						"app-area",
-						"imaginex",
-						"com",
-						"bd"
+						"epharma24",
+						"com"
 					],
 					"path": [
 						"api",
@@ -2227,9 +2248,8 @@
 					"protocol": "https",
 					"host": [
 						"app-area",
-						"imaginex",
-						"com",
-						"bd"
+						"epharma24",
+						"com"
 					],
 					"path": [
 						"api",
@@ -2364,7 +2384,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/get/all/banners",
+					"raw": "https://app-area.fejmo.com/api/get/all/banners",
 					"protocol": "https",
 					"host": [
 						"app-area",
@@ -2581,7 +2601,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/order/checkout",
+					"raw": "https://app-area.fejmo.com/api/order/checkout",
 					"protocol": "https",
 					"host": [
 						"app-area",
@@ -2715,9 +2735,8 @@
 					"protocol": "https",
 					"host": [
 						"app-area",
-						"imaginex",
-						"com",
-						"bd"
+						"epharma24",
+						"com"
 					],
 					"path": [
 						"api",
@@ -2930,7 +2949,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/submit/shipping/billing/info",
+					"raw": "http://127.0.0.1:8000/api/submit/shipping/billing/info",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -3059,7 +3078,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/get/my/orders",
+					"raw": "https://app-area.riointernational.com.bd/api/get/my/orders",
 					"protocol": "https",
 					"host": [
 						"app-area",
@@ -3439,7 +3458,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/get/category/tree",
+					"raw": "https://app-area.fejmo.com/api/get/category/tree",
 					"protocol": "https",
 					"host": [
 						"app-area",
@@ -3540,7 +3559,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/add/to/cart",
+					"raw": "https://app-area.bestu.com.bd/api/add/to/cart",
 					"protocol": "https",
 					"host": [
 						"app-area",
@@ -4550,12 +4569,12 @@
 					]
 				},
 				"url": {
-					"raw": "https://imaginex-admin.getcommerce.xyz/api/add/to/wishlist",
+					"raw": "https://app-area.epharma24.com/api/add/to/wishlist",
 					"protocol": "https",
 					"host": [
-						"imaginex-admin",
-						"getcommerce",
-						"xyz"
+						"app-area",
+						"epharma24",
+						"com"
 					],
 					"path": [
 						"api",
@@ -4680,9 +4699,8 @@
 					"protocol": "https",
 					"host": [
 						"app-area",
-						"imaginex",
-						"com",
-						"bd"
+						"epharma24",
+						"com"
 					],
 					"path": [
 						"api",
@@ -5031,9 +5049,8 @@
 					"protocol": "https",
 					"host": [
 						"app-area",
-						"imaginex",
-						"com",
-						"bd"
+						"epharma24",
+						"com"
 					],
 					"path": [
 						"api",
@@ -5413,9 +5430,8 @@
 					"protocol": "https",
 					"host": [
 						"app-area",
-						"imaginex",
-						"com",
-						"bd"
+						"epharma24",
+						"com"
 					],
 					"path": [
 						"api",
@@ -5797,7 +5813,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/filter/products",
+					"raw": "https://app-area.zanalifestyle.com/api/filter/products",
 					"protocol": "https",
 					"host": [
 						"app-area",
@@ -5952,7 +5968,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/get/payment/gateways",
+					"raw": "http://127.0.0.1:8000/api/get/payment/gateways",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -6074,7 +6090,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/blog/details/blog-41697004676",
+					"raw": "https://app-area.fejmo.com/api/blog/details/blog-41697004676",
 					"protocol": "https",
 					"host": [
 						"app-area",
@@ -6132,7 +6148,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/products/for/you?page=2",
+					"raw": "https://app-area.fejmo.com/api/products/for/you?page=2",
 					"protocol": "https",
 					"host": [
 						"app-area",
@@ -6177,7 +6193,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/products/for/you/with/login",
+					"raw": "http://127.0.0.1:8000/api/products/for/you/with/login",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -6210,7 +6226,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/get/delivery/charge/dhaka",
+					"raw": "http://127.0.0.1:8000/api/get/delivery/charge/dhaka",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -6242,7 +6258,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/get/all/districts",
+					"raw": "http://127.0.0.1:8000/api/get/all/districts",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -6283,7 +6299,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/district/wise/thana",
+					"raw": "http://127.0.0.1:8000/api/district/wise/thana",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -6321,7 +6337,7 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "https://app-area.epharma24.com/api/get/districts/with/thana",
+					"raw": "http://127.0.0.1:8000/api/get/districts/with/thana",
 					"protocol": "http",
 					"host": [
 						"127",

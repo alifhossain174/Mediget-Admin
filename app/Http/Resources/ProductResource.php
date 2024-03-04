@@ -77,9 +77,13 @@ class ProductResource extends JsonResource
             'stock' => $this->stock,
 
 
-            'generic_id' => $medicineGenericInfo ? $medicineGenericInfo->name : '',
-            'disease_id' => $diseaseInfo ? $diseaseInfo->name : '',
-            'medicine_type_id' => $medicineType ? $medicineType->name : '',
+            'generic_id' => $this->generic_id,
+            'generic_name' => $medicineGenericInfo ? $medicineGenericInfo->name : '',
+            'disease_id' => $this->disease_id,
+            'disease_name' => $diseaseInfo ? $diseaseInfo->name : '',
+            'medicine_type_id' => $this->medicine_type_id,
+            'medicine_type_name' => $medicineType ? $medicineType->name : '',
+
             'points' => $this->points,
             'piece_per_leaf' => $this->piece_per_leaf,
             'leaf_per_box' => $this->leaf_per_box,

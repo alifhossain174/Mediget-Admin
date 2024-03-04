@@ -10,6 +10,7 @@ use App\Http\Resources\CategoryResource;
 use App\Http\Resources\GeneralInfoResource;
 use App\Http\Resources\BrandResource;
 use App\Http\Resources\FlagResource;
+use App\Models\Disease;
 use App\Models\EmailConfigure;
 use App\Models\User;
 use App\Models\Category;
@@ -612,6 +613,20 @@ class ApiController extends BaseController
 
             $brands = Brand::orderBy('serial', 'asc')->where('status', 1)->get();
             return response()->json(['success' => true, 'data' => $brands], 200);
+
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => "Authorization Token is Invalid"
+            ], 422);
+        }
+    }
+
+    public function getAllDiseases(Request $request){
+        if ($request->header('Authorization') == ApiController::AUTHORIZATION_TOKEN) {
+
+            $data = Disease::orderBy('serial', 'asc')->where('status', 1)->get();
+            return response()->json(['success' => true, 'data' => $data], 200);
 
         } else {
             return response()->json([
