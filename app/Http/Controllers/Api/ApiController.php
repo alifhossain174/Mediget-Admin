@@ -45,7 +45,7 @@ use Image;
 
 class ApiController extends BaseController
 {
-    const AUTHORIZATION_TOKEN = 'GenericCommerceV1-SBW7583837NUDD82';
+    const AUTHORIZATION_TOKEN = 'Mediget-04032024';
 
     public function userProfileInfo(){
 

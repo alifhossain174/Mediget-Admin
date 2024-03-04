@@ -13,7 +13,7 @@ use Illuminate\Support\Str;
 
 class SupportController extends Controller
 {
-    const AUTHORIZATION_TOKEN = 'GenericCommerceV1-SBW7583837NUDD82';
+    const AUTHORIZATION_TOKEN = 'Mediget-04032024';
     public function submitSupportTicket(Request $request){
 
         $subject = $request->subject;

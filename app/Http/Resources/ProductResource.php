@@ -4,7 +4,10 @@ namespace App\Http\Resources;
 
 use App\Models\Category;
 use App\Models\ChildCategory;
+use App\Models\Disease;
 use App\Models\Flag;
+use App\Models\MedicineGeneric;
+use App\Models\MedicineType;
 use App\Models\ProductImage;
 use App\Models\ProductQuestionAnswer;
 use App\Models\ProductReview;
@@ -31,7 +34,8 @@ class ProductResource extends JsonResource
                         ->leftJoin('storage_types', 'product_variants.storage_type_id', 'storage_types.id')
                         ->leftJoin('device_conditions', 'product_variants.device_condition_id', 'device_conditions.id')
                         ->leftJoin('product_warrenties', 'product_variants.warrenty_id', 'product_warrenties.id')
-                        ->select('product_variants.*', 'colors.name as color_name', 'colors.code as color_code', 'product_sizes.name as size_name', 'country.name as region_name', 'sims.name as sim_type', DB::Raw("CONCAT(storage_types.ram, '/', storage_types.rom) AS storage_type"), 'device_conditions.name as device_condition', 'product_warrenties.name as product_warrenty')
+                        ->leftJoin('units', 'product_variants.unit_id', 'units.id')
+                        ->select('product_variants.*', 'units.name as unit_name', 'colors.name as color_name', 'colors.code as color_code', 'product_sizes.name as size_name', 'country.name as region_name', 'sims.name as sim_type', DB::Raw("CONCAT(storage_types.ram, '/', storage_types.rom) AS storage_type"), 'device_conditions.name as device_condition', 'product_warrenties.name as product_warrenty')
                         ->where('product_id', $this->id)
                         ->get();
 
@@ -40,9 +44,14 @@ class ProductResource extends JsonResource
         $childcategoryInfo = ChildCategory::where('id', $this->childcategory_id)->first();
         $flagInfo = Flag::where('id', $this->flag_id)->first();
 
+        $medicineGenericInfo = MedicineGeneric::where('id', $this->generic_id)->first();
+        $diseaseInfo = Disease::where('id', $this->disease_id)->first();
+        $medicineType = MedicineType::where('id', $this->medicine_type_id)->first();
+
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'strength' => $this->strength,
             'code' => $this->code,
             'category_id' => $this->category_id,
             'category_name' => $this->category_name,
@@ -66,6 +75,18 @@ class ProductResource extends JsonResource
             'price' => $this->price,
             'discount_price' => $this->discount_price,
             'stock' => $this->stock,
+
+
+            'generic_id' => $medicineGenericInfo ? $medicineGenericInfo->name : '',
+            'disease_id' => $diseaseInfo ? $diseaseInfo->name : '',
+            'medicine_type_id' => $medicineType ? $medicineType->name : '',
+            'points' => $this->points,
+            'piece_per_leaf' => $this->piece_per_leaf,
+            'leaf_per_box' => $this->leaf_per_box,
+            'is_otc' => $this->is_otc,
+            'is_antibiotic' => $this->is_antibiotic,
+
+
             'unit_id' => $this->unit_id,
             'unit_name' => $this->unit_name,
             'tags' => $this->tags,

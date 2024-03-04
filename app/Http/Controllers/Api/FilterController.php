@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 
 class FilterController extends Controller
 {
-    const AUTHORIZATION_TOKEN = 'GenericCommerceV1-SBW7583837NUDD82';
+    const AUTHORIZATION_TOKEN = 'Mediget-04032024';
     public function filterSearchResults(Request $request){
         if ($request->header('Authorization') == FilterController::AUTHORIZATION_TOKEN) {
 

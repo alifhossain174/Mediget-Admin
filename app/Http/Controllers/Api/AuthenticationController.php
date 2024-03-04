@@ -20,7 +20,7 @@ use Laravel\Socialite\Facades\Socialite;
 
 class AuthenticationController extends Controller
 {
-    const AUTHORIZATION_TOKEN = 'GenericCommerceV1-SBW7583837NUDD82';
+    const AUTHORIZATION_TOKEN = 'Mediget-04032024';
 
     public function userRegistration(Request $request){
         if ($request->header('Authorization') == AuthenticationController::AUTHORIZATION_TOKEN) {

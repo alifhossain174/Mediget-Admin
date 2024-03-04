@@ -10,7 +10,7 @@ use App\Http\Resources\BlogResource;
 
 class BlogController extends Controller
 {
-    const AUTHORIZATION_TOKEN = 'GenericCommerceV1-SBW7583837NUDD82';
+    const AUTHORIZATION_TOKEN = 'Mediget-04032024';
     public function getAllBlogCategories(Request $request){
         if ($request->header('Authorization') == BlogController::AUTHORIZATION_TOKEN) {
 
