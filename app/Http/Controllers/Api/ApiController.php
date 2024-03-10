@@ -578,7 +578,7 @@ class ApiController extends BaseController
     public function featuredFlagWiseProducts(Request $request){
         if ($request->header('Authorization') == ApiController::AUTHORIZATION_TOKEN) {
 
-            $data = Flag::where('featured', 1)->where('status', 1)->get();
+            $data = Flag::where('featured', 1)->where('status', 1)->orderBy('serial', 'asc')->get();
 
             return response()->json([
                 'success' => true,
@@ -627,7 +627,7 @@ class ApiController extends BaseController
     public function getAllFlags(Request $request){
         if ($request->header('Authorization') == ApiController::AUTHORIZATION_TOKEN) {
 
-            $flags = Flag::orderBy('name', 'asc')->where('status', 1)->get();
+            $flags = Flag::orderBy('serial', 'asc')->where('status', 1)->get();
             return response()->json([
                 'success' => true,
                 'data' => $flags
