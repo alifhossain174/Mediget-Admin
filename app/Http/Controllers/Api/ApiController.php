@@ -362,13 +362,13 @@ class ApiController extends BaseController
                         ->where('products.id', '!=', $request->product_id)
                         ->where('products.generic_id', $genericId)
                         ->skip(0)
-                        ->limit(6)
+                        ->limit(10)
                         ->inRandomOrder()
-                        ->get();
+                        ->paginate(10);
 
             return response()->json([
                 'success' => true,
-                'data' => ProductResource::collection($data)
+                'data' => ProductResource::collection($data)->resource
             ], 200);
 
         } else {
