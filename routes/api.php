@@ -67,6 +67,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('childcategory/wise/products', [ApiController::class, 'childcategoryWiseProducts']);
     Route::get('product/details/{id}', [ApiController::class, 'productDetails']);
     Route::post('flag/wise/products', [ApiController::class, 'flagWiseProducts']);
+    Route::post('flag/wise/products/paginated', [ApiController::class, 'flagWiseProductsPaginated']);
     Route::get('featured/flag/wise/products', [ApiController::class, 'featuredFlagWiseProducts']);
     Route::post('flag/wise/all/products', [ApiController::class, 'flagWiseAllProducts']);
     Route::get('featured/brand/wise/products', [ApiController::class, 'featuredBrandWiseProducts']);

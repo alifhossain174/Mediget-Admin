@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3ea626c7-f34f-4995-a469-c1af8e82013d",
+		"_postman_id": "9be3fd3e-277b-4db3-b5f3-9487bd47fe60",
 		"name": "Mediget API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "9320515"
@@ -1778,6 +1778,47 @@
 						"flag",
 						"wise",
 						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Flag Wise Products Paginated",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Mediget-04032024",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "flag",
+							"value": "14",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/flag/wise/products/paginated",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"flag",
+						"wise",
+						"products",
+						"paginated"
 					]
 				}
 			},
