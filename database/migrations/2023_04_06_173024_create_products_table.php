@@ -37,8 +37,8 @@ class CreateProductsTable extends Migration
             $table->double('stock')->default(0);
             $table->double('points')->default(0);
 
-            $table->double('piece_per_leaf')->default(0);
-            $table->double('leaf_per_box')->default(0);
+            $table->double('piece_per_leaf')->nullable();
+            $table->double('leaf_per_box')->nullable();
 
             $table->unsignedBigInteger('unit_id')->nullable();
             $table->string('tags')->nullable();
