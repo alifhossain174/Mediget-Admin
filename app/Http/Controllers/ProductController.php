@@ -43,6 +43,8 @@ class ProductController extends Controller
 
     public function saveNewProduct(Request $request){
 
+        ini_set('memory_limit', '4096M');
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'category_id' => 'required',
@@ -328,6 +330,8 @@ class ProductController extends Controller
     }
 
     public function updateProduct(Request $request){
+
+        ini_set('memory_limit', '4096M');
 
         $request->validate([
             'name' => 'required|max:255',
