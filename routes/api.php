@@ -74,6 +74,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('get/all/flags', [ApiController::class, 'getAllFlags']);
     Route::get('get/all/brands', [ApiController::class, 'getAllBrands']);
     Route::get('get/all/diseases', [ApiController::class, 'getAllDiseases']);
+    Route::post('disease/wise/medicine', [ApiController::class, 'diseaseWiseMedicine']);
     Route::post('search/products', [ApiController::class, 'searchProducts']);
     Route::get('search/products', [ApiController::class, 'searchProductsGet']);
     Route::post('live/search/products', [ApiController::class, 'searchLiveProducts']);

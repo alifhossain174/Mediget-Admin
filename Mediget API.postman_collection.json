@@ -1784,6 +1784,47 @@
 			"response": []
 		},
 		{
+			"name": "Disease Wise Products",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Mediget-04032024",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "slug",
+							"value": "depression",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8085/api/disease/wise/medicine",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"disease",
+						"wise",
+						"medicine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Flag Wise Products Paginated",
 			"request": {
 				"method": "POST",

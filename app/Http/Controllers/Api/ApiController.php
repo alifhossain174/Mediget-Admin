@@ -624,6 +624,38 @@ class ApiController extends BaseController
         }
     }
 
+    public function diseaseWiseMedicine(Request $request){
+        if ($request->header('Authorization') == ApiController::AUTHORIZATION_TOKEN) {
+
+            $data = DB::table('products')
+                ->leftJoin('categories', 'products.category_id', '=', 'categories.id')
+                ->leftJoin('subcategories', 'products.subcategory_id', '=', 'subcategories.id')
+                ->leftJoin('child_categories', 'products.childcategory_id', '=', 'child_categories.id')
+                ->leftJoin('units', 'products.unit_id', '=', 'units.id')
+                ->leftJoin('flags', 'products.flag_id', '=', 'flags.id')
+                ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
+                ->leftJoin('product_models', 'products.model_id', '=', 'product_models.id')
+                ->leftJoin('product_warrenties', 'products.warrenty_id', '=', 'product_warrenties.id')
+                ->leftJoin('diseases', 'products.disease_id', '=', 'diseases.id')
+                ->select('products.*', 'categories.name as category_name', 'subcategories.name as subcategory_name', 'child_categories.name as childcategory_name', 'units.name as unit_name', 'flags.name as flag_name', 'brands.name as brand_name', 'product_models.name as model_name', 'product_warrenties.name as product_warrenty')
+                ->where('diseases.slug', $request->slug)
+                ->where('products.status', 1)
+                ->orderBy('products.id', 'desc')
+                ->paginate(20);
+
+            return response()->json([
+                'success' => true,
+                'data' => ProductResource::collection($data)->resource
+            ], 200);
+
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => "Authorization Token is Invalid"
+            ], 422);
+        }
+    }
+
     public function getAllFlags(Request $request){
         if ($request->header('Authorization') == ApiController::AUTHORIZATION_TOKEN) {
 
@@ -744,11 +776,11 @@ class ApiController extends BaseController
                 }
 
                 $query->orderBy('products.id', 'desc')->skip(0)->limit(5);
-                $data = $query->get();
+                $data = $query->paginate(5);
 
                 return response()->json([
                     'success' => true,
-                    'data' => ProductResource::collection($data)
+                    'data' => ProductResource::collection($data)->resource
                 ], 200);
 
             } else {
