@@ -173,7 +173,6 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('get/category/wise/blogs', [BlogController::class, 'getCategoryWiseBlogs']);
     Route::get('blog/details/{slug}', [BlogController::class, 'blogDetails']);
 
-
     // nursing api
     Route::middleware('auth:sanctum')->group( function () {
         Route::get('nursing/service/categories', [NursingServiceController::class, 'nursingServiceCategories']);
