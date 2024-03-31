@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\SupportController;
 use App\Http\Controllers\Api\FilterController;
 use App\Http\Controllers\Api\BlogController;
+use App\Http\Controllers\Api\NursingServiceController;
 
 Route::group(['namespace' => 'Api'], function () {
 
@@ -136,6 +137,7 @@ Route::group(['namespace' => 'Api'], function () {
         // wishlists
         Route::post('add/to/wishlist', [CartController::class, 'addToWishList']);
         Route::get('get/my/wishlist', [CartController::class, 'getMyWishList']);
+        Route::get('get/my/wishlist/formatted', [CartController::class, 'getMyWishListFormatted']);
         Route::post('delete/my/wishlist', [CartController::class, 'deleteMyWishList']);
     });
     Route::post('guest/order/checkout/buy/now/app', [CartController::class, 'guestCartCheckoutBuyNow']);
@@ -169,5 +171,15 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('get/all/blogs', [BlogController::class, 'getAllBlogs']);
     Route::post('get/category/wise/blogs', [BlogController::class, 'getCategoryWiseBlogs']);
     Route::get('blog/details/{slug}', [BlogController::class, 'blogDetails']);
+
+
+    // nursing api
+    Route::middleware('auth:sanctum')->group( function () {
+        Route::get('nursing/service/categories', [NursingServiceController::class, 'nursingServiceCategories']);
+        Route::post('submit/nursing/service/request', [NursingServiceController::class, 'submitNursingServiceRequest']);
+        Route::get('my/nursing/service/requests', [NursingServiceController::class, 'myNursingServiceRequests']);
+        Route::post('update/nursing/service/request', [NursingServiceController::class, 'updateNursingServiceRequest']);
+        Route::post('delete/nursing/service/request', [NursingServiceController::class, 'deleteNursingServiceRequest']);
+    });
 
 });

@@ -7,6 +7,7 @@ use App\Http\Resources\OrderResource;
 use App\Http\Resources\PromoCodeResource;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use App\Http\Resources\ProductResource;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderDetails;
@@ -706,7 +707,6 @@ class CartController extends Controller
     }
 
     public function getMyWishList(){
-
         $wishLists = DB::table('wish_lists')
                         ->join('products', 'wish_lists.product_id', '=', 'products.id')
                         ->leftJoin('units', 'products.unit_id', '=', 'units.id')
@@ -719,7 +719,28 @@ class CartController extends Controller
             'success' => true,
             'data' => $wishLists,
         ], 200);
+    }
 
+    public function getMyWishListFormatted(){
+        $data = DB::table('wish_lists')
+                    ->join('products', 'wish_lists.product_id', '=', 'products.id')
+                    ->leftJoin('categories', 'products.category_id', '=', 'categories.id')
+                    ->leftJoin('subcategories', 'products.subcategory_id', '=', 'subcategories.id')
+                    ->leftJoin('child_categories', 'products.childcategory_id', '=', 'child_categories.id')
+                    ->leftJoin('units', 'products.unit_id', '=', 'units.id')
+                    ->leftJoin('flags', 'products.flag_id', '=', 'flags.id')
+                    ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
+                    ->leftJoin('product_models', 'products.model_id', '=', 'product_models.id')
+                    ->leftJoin('product_warrenties', 'products.warrenty_id', '=', 'product_warrenties.id')
+                    ->select('products.*', 'categories.name as category_name', 'subcategories.name as subcategory_name', 'child_categories.name as childcategory_name', 'units.name as unit_name', 'flags.name as flag_name', 'brands.name as brand_name', 'product_models.name as model_name', 'product_warrenties.name as product_warrenty')
+                    ->where('wish_lists.user_id', auth()->user()->id)
+                    ->orderBy('products.id', 'desc')
+                    ->paginate(16);
+
+        return response()->json([
+            'success' => true,
+            'data' => ProductResource::collection($data)->resource
+        ], 200);
     }
 
     public function deleteMyWishList(Request $request){
