@@ -7323,7 +7323,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "105|FNR5smCix6diYM9oDZH6i1yNAZnsiJ0dFuQBWkwT",
+							"value": "29|6dYuDZKFXeXOoAGltsU3eU7V7SAeMUKwJNa7kKTa",
 							"type": "string"
 						}
 					]
@@ -7342,15 +7342,13 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8090/api/my/medicine/requests",
-					"protocol": "http",
+					"raw": "https://app-area.epharma24.com/api/my/medicine/requests",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"app-area",
+						"epharma24",
+						"com"
 					],
-					"port": "8090",
 					"path": [
 						"api",
 						"my",
