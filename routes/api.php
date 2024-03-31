@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\SupportController;
 use App\Http\Controllers\Api\FilterController;
 use App\Http\Controllers\Api\BlogController;
 use App\Http\Controllers\Api\NursingServiceController;
+use App\Http\Controllers\Api\PrescriptionController;
 
 Route::group(['namespace' => 'Api'], function () {
 
@@ -181,5 +182,14 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('update/nursing/service/request', [NursingServiceController::class, 'updateNursingServiceRequest']);
         Route::post('delete/nursing/service/request', [NursingServiceController::class, 'deleteNursingServiceRequest']);
     });
+
+    // upload prescription api
+    Route::middleware('auth:sanctum')->group( function () {
+        Route::post('upload/prescription', [PrescriptionController::class, 'uploadPrescription']);
+        Route::get('my/prescriptions', [PrescriptionController::class, 'myPrescriptions']);
+        Route::post('update/my/prescription', [PrescriptionController::class, 'updateMyPrescription']);
+        Route::post('delete/my/prescription', [PrescriptionController::class, 'deleteMyPrescription']);
+    });
+
 
 });

@@ -19,7 +19,7 @@ class NursingServiceController extends Controller
             'success' => true,
             'data' => $categories
         ], 200);
-        
+
     }
 
     public function submitNursingServiceRequest(Request $request){
