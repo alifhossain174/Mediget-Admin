@@ -6720,7 +6720,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "105|FNR5smCix6diYM9oDZH6i1yNAZnsiJ0dFuQBWkwT",
+							"value": "28|hDjE4qQWRnndrNBofuTPO95xdZLXdoIQQRjHLU7J",
 							"type": "string"
 						}
 					]
@@ -6760,15 +6760,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8090/api/upload/prescription",
-					"protocol": "http",
+					"raw": "https://app-area.epharma24.com/api/upload/prescription",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"app-area",
+						"epharma24",
+						"com"
 					],
-					"port": "8090",
 					"path": [
 						"api",
 						"upload",
@@ -6945,6 +6943,299 @@
 						"delete",
 						"my",
 						"prescription"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Doctors List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Mediget-04032024",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8090/api/doctors/list",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"doctors",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Submit Doctor Appointment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "105|FNR5smCix6diYM9oDZH6i1yNAZnsiJ0dFuQBWkwT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Mediget-04032024",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "doctor_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Test fahim",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "0198877441",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "28",
+							"type": "text"
+						},
+						{
+							"key": "weight",
+							"value": "80 KG",
+							"type": "text"
+						},
+						{
+							"key": "visit_date_time",
+							"value": "24-03-04 21:08:00",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8090/api/submit/doctor/appointment",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"submit",
+						"doctor",
+						"appointment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "My Doctor Appointments",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "105|FNR5smCix6diYM9oDZH6i1yNAZnsiJ0dFuQBWkwT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Mediget-04032024",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8090/api/my/doctor/appointments",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"my",
+						"doctor",
+						"appointments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Doctor Appointment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "105|FNR5smCix6diYM9oDZH6i1yNAZnsiJ0dFuQBWkwT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Mediget-04032024",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Test Fahim",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "01969005035",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "28 Years",
+							"type": "text"
+						},
+						{
+							"key": "weight",
+							"value": "82 KG",
+							"type": "text"
+						},
+						{
+							"key": "visit_date_time",
+							"value": "24-03-04 16:08:00",
+							"type": "text"
+						},
+						{
+							"key": "doctor_appointment_id",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8090/api/update/doctor/appointment",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"update",
+						"doctor",
+						"appointment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Doctor Appointment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "105|FNR5smCix6diYM9oDZH6i1yNAZnsiJ0dFuQBWkwT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Mediget-04032024",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "doctor_appointment_id",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8090/api/delete/my/doctor/appointment",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"delete",
+						"my",
+						"doctor",
+						"appointment"
 					]
 				}
 			},

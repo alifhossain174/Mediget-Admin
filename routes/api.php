@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\FilterController;
 use App\Http\Controllers\Api\BlogController;
 use App\Http\Controllers\Api\NursingServiceController;
 use App\Http\Controllers\Api\PrescriptionController;
+use App\Http\Controllers\Api\DoctorAppointmentController;
 
 Route::group(['namespace' => 'Api'], function () {
 
@@ -173,7 +174,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('get/category/wise/blogs', [BlogController::class, 'getCategoryWiseBlogs']);
     Route::get('blog/details/{slug}', [BlogController::class, 'blogDetails']);
 
-    // nursing api
+    // nursing service api
     Route::middleware('auth:sanctum')->group( function () {
         Route::get('nursing/service/categories', [NursingServiceController::class, 'nursingServiceCategories']);
         Route::post('submit/nursing/service/request', [NursingServiceController::class, 'submitNursingServiceRequest']);
@@ -182,12 +183,21 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('delete/nursing/service/request', [NursingServiceController::class, 'deleteNursingServiceRequest']);
     });
 
-    // upload prescription api
+    // prescription api
     Route::middleware('auth:sanctum')->group( function () {
         Route::post('upload/prescription', [PrescriptionController::class, 'uploadPrescription']);
         Route::get('my/prescriptions', [PrescriptionController::class, 'myPrescriptions']);
         Route::post('update/my/prescription', [PrescriptionController::class, 'updateMyPrescription']);
         Route::post('delete/my/prescription', [PrescriptionController::class, 'deleteMyPrescription']);
+    });
+
+    // doctor appointment api
+    Route::get('doctors/list', [DoctorAppointmentController::class, 'doctorsList']);
+    Route::middleware('auth:sanctum')->group( function () {
+        Route::post('submit/doctor/appointment', [DoctorAppointmentController::class, 'submitDoctorAppointment']);
+        Route::get('my/doctor/appointments', [DoctorAppointmentController::class, 'myDoctorAppointments']);
+        Route::post('update/doctor/appointment', [DoctorAppointmentController::class, 'updateDoctorAppointment']);
+        Route::post('delete/my/doctor/appointment', [DoctorAppointmentController::class, 'deleteMyDoctorAppointment']);
     });
 
 
