@@ -6967,15 +6967,13 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8090/api/doctors/list",
-					"protocol": "http",
+					"raw": "https://app-area.epharma24.com/api/doctors/list",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"app-area",
+						"epharma24",
+						"com"
 					],
-					"port": "8090",
 					"path": [
 						"api",
 						"doctors",
@@ -7236,6 +7234,181 @@
 						"my",
 						"doctor",
 						"appointment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Submit Request for Medicine",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "105|FNR5smCix6diYM9oDZH6i1yNAZnsiJ0dFuQBWkwT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Mediget-04032024",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Md Fahim",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "01969005025",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "Khiilkhet Noyanagar",
+							"type": "text"
+						},
+						{
+							"key": "medicine_name[]",
+							"value": "Napa",
+							"type": "text"
+						},
+						{
+							"key": "qty[]",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8090/api/submit/request/for/medicine",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"submit",
+						"request",
+						"for",
+						"medicine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "My Medicine Requests",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "105|FNR5smCix6diYM9oDZH6i1yNAZnsiJ0dFuQBWkwT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Mediget-04032024",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8090/api/my/medicine/requests",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"my",
+						"medicine",
+						"requests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Medicine Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "105|FNR5smCix6diYM9oDZH6i1yNAZnsiJ0dFuQBWkwT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Mediget-04032024",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "medicine_request_id",
+							"value": "6",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8090/api/delete/my/medicine/request",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"delete",
+						"my",
+						"medicine",
+						"request"
 					]
 				}
 			},

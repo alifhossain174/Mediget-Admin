@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\BlogController;
 use App\Http\Controllers\Api\NursingServiceController;
 use App\Http\Controllers\Api\PrescriptionController;
 use App\Http\Controllers\Api\DoctorAppointmentController;
+use App\Http\Controllers\Api\MedicineRequestController;
 
 Route::group(['namespace' => 'Api'], function () {
 
@@ -198,6 +199,13 @@ Route::group(['namespace' => 'Api'], function () {
         Route::get('my/doctor/appointments', [DoctorAppointmentController::class, 'myDoctorAppointments']);
         Route::post('update/doctor/appointment', [DoctorAppointmentController::class, 'updateDoctorAppointment']);
         Route::post('delete/my/doctor/appointment', [DoctorAppointmentController::class, 'deleteMyDoctorAppointment']);
+    });
+
+    // medicine request api
+    Route::middleware('auth:sanctum')->group( function () {
+        Route::post('submit/request/for/medicine', [MedicineRequestController::class, 'submitRequestForMedicine']);
+        Route::get('my/medicine/requests', [MedicineRequestController::class, 'myMedicineRequests']);
+        Route::post('delete/my/medicine/request', [MedicineRequestController::class, 'deleteMyMedicineRequest']);
     });
 
 
