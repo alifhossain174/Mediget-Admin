@@ -125,26 +125,24 @@
 					"formdata": [
 						{
 							"key": "username",
-							"value": "dcsuperstar22@gmail.com",
+							"value": "alifhossain174@gmail.com",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "dc2222",
+							"value": "12345678",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8090/api/user/login",
-					"protocol": "http",
+					"raw": "https://app-area.epharma24.com/api/user/login",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"app-area",
+						"epharma24",
+						"com"
 					],
-					"port": "8090",
 					"path": [
 						"api",
 						"user",
@@ -6424,7 +6422,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "105|FNR5smCix6diYM9oDZH6i1yNAZnsiJ0dFuQBWkwT",
+							"value": "27|hOD6l0DC48cfnyuqXhwLgpmaIswJH2a90Rd6EQjm",
 							"type": "string"
 						}
 					]
@@ -6443,15 +6441,13 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8090/api/nursing/service/categories",
-					"protocol": "http",
+					"raw": "https://app-area.epharma24.com/api/nursing/service/categories",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"app-area",
+						"epharma24",
+						"com"
 					],
-					"port": "8090",
 					"path": [
 						"api",
 						"nursing",
@@ -6711,6 +6707,244 @@
 						"nursing",
 						"service",
 						"request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Prescription",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "105|FNR5smCix6diYM9oDZH6i1yNAZnsiJ0dFuQBWkwT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Mediget-04032024",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "attachment",
+							"type": "file",
+							"src": "/C:/Users/alifh/Downloads/users.xlsx"
+						},
+						{
+							"key": "patient_name",
+							"value": "Fahim",
+							"type": "text"
+						},
+						{
+							"key": "patient_phone",
+							"value": "01969005035",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "Khilkhet 1229",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8090/api/upload/prescription",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"upload",
+						"prescription"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "My Prescriptions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "105|FNR5smCix6diYM9oDZH6i1yNAZnsiJ0dFuQBWkwT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Mediget-04032024",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8090/api/my/prescriptions",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"my",
+						"prescriptions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update My Prescription",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "105|FNR5smCix6diYM9oDZH6i1yNAZnsiJ0dFuQBWkwT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Mediget-04032024",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "attachment",
+							"type": "file",
+							"src": "/C:/Users/alifh/Downloads/users.xlsx"
+						},
+						{
+							"key": "patient_name",
+							"value": "Fahim Hossain",
+							"type": "text"
+						},
+						{
+							"key": "patient_phone",
+							"value": "01969005035",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "Khilkhet 1229",
+							"type": "text"
+						},
+						{
+							"key": "prescription_id",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8090/api/update/my/prescription",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"update",
+						"my",
+						"prescription"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete My Prescription",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "105|FNR5smCix6diYM9oDZH6i1yNAZnsiJ0dFuQBWkwT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Mediget-04032024",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "prescription_id",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8090/api/delete/my/prescription",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"delete",
+						"my",
+						"prescription"
 					]
 				}
 			},
