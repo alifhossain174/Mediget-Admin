@@ -97,6 +97,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('get/payment/gateways', [ApiController::class, 'getPaymentGateways']);
     Route::post('order/preview', [ApiController::class, 'orderPreview']);
     Route::get('get/delivery/charge/{district}', [ApiController::class, 'getdeliveryCharge']);
+    Route::get('get/all/services', [ApiController::class, 'getAllServices']);
 
     // new api for districts and thana
     Route::get('get/all/districts', [ApiController::class, 'getAllDistricts']);

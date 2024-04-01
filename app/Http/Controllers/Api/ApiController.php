@@ -2006,4 +2006,21 @@ class ApiController extends BaseController
         ], 200);
     }
 
+    public function getAllServices(Request $request){
+        if ($request->header('Authorization') == ApiController::AUTHORIZATION_TOKEN) {
+
+            $data = DB::table('services')->where('status', 1)->get();
+            return response()->json([
+                'success' => true,
+                'data' => $data
+            ]);
+
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => "Authorization Token is Invalid"
+            ], 422);
+        }
+    }
+
 }

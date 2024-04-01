@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "899dc81c-a62c-4fe8-9e11-4288eedb6866",
+		"_postman_id": "8770579b-0009-42a5-ae15-29d823810864",
 		"name": "Mediget API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "9320515"
@@ -7407,6 +7407,44 @@
 						"my",
 						"medicine",
 						"request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Services",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Mediget-04032024",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8090/api/get/all/services",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"get",
+						"all",
+						"services"
 					]
 				}
 			},
